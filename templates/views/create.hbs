@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/create.css">
+</head>
+  {{>header}}
+<body>
+
+  <h2 id="date"></h2>
+  <form method='post' action="/entries">
+
+    <label id='sleep_lab' for="sleep">Sleep: </label>
+    <select class ="small_input" id="sleep" name="sleep" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <label id="diet_lab" for="diet">Diet: </label>
+    <select class ="small_input" id="diet" name="diet" required>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+
+    <label id="exp_lab" for="expenses">Expenses :</label>
+    <input class ="small_input" type="text" id="expenses" name="expenses" required>
+
+    <label id="inc_lab" for="income">Income :</label>
+    <input class ="small_input" type="text" id="income" name="income" required>
+
+    <label class="txt_label" id="exer_lab"for="exercise">Exercise</label>
+    <textarea id="exercise" name="exercise" rows="8" cols="40" required></textarea>
+
+    <label class="txt_label" id="work_lab" for="work">Work</label>
+    <textarea id="work" name="work" rows="8" cols="40" required></textarea>
+
+    <label class="txt_label" id="notes_lab" for="notes">Notes</label>
+    <textarea id="notes" name="notes" rows="8" cols="40" required></textarea>
+
+    <input id="submit" type="submit" value="submit">
+
+    <p id='response'></p>
+  </form>
+  <script src="../js/create_grid.js"></script>
+  <script src="../js/todays_date.js"></script>
+  <script src="../js/create_entry.js"></script>
+</body>
+</html>

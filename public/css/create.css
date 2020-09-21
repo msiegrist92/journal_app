@@ -1,0 +1,40 @@
+textarea {
+  resize: none;
+}
+
+form {
+  margin: 0 auto;
+  max-width: 960px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, auto);
+  grid-gap: 1.5rem;
+  grid-template-areas:
+    "sleep_lab sleep diet_lab diet"
+    "inc_lab income exp_lab expenses"
+    "exer_lab exer_lab exercise exercise"
+    "work_lab work_lab work work"
+    "notes_lab notes_lab notes notes"
+    ". submit submit .";
+}
+
+
+label {
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+textarea {
+  width: 80%;
+  margin-right: 20%;
+}
+
+.txt_label {
+  font-size: 1.75rem;
+  align-self: center;
+}
+
+.small_input {
+  width: 80%;
+  margin-right: 20%;
+}

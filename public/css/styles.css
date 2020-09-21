@@ -1,0 +1,35 @@
+header {
+  max-height: 100px;
+  display: grid;
+  grid-template-columns: "20% 20% 60%";
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "h1 p nav";
+}
+
+header nav {
+  grid-area: nav;
+}
+
+header nav ul {
+  display: inline-block;
+}
+
+header nav ul li {
+  text-decoration: none;
+  display: inline-block;
+}
+
+header nav ul li a {
+  text-decoration: none;
+}
+
+header h1 {
+  display: inline-block;
+  grid-area: h1;
+}
+
+header p {
+  display: inline-block;
+  grid-area: p;
+}
