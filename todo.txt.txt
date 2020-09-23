@@ -1,0 +1,6 @@
+allow user to select number of recent entries to display
+reduce amount of api reqs made
+refactor javascript
+reorganize into modules
+reduce button actions into singular function calls
+add listeners to document using loops

@@ -1,0 +1,47 @@
+#btn_cont {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "btn_1 btn_2 btn_3";
+  width: 80%;
+  margin: 2% auto;
+}
+
+#text_btns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 1.5rem;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "work_btn exer_btn gen_btn";
+  width: 80%;
+  margin: 2% auto;
+}
+
+#notes_display {
+  width: 75%;
+  margin: 2% auto;
+  border: 2px solid rgba(50, 200, 137, 0.93);
+  padding: 1rem;
+  font-size: 1.15rem;
+}
+
+table {
+  width: 40%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+tr {
+  padding: .25rem;
+}
+
+.date_selected {
+  background-color: rgba(50, 200, 137, 0.6);
+}
+
+.notes_selected {
+  background-color: rgba(50, 200, 137, 0.6);
+}

@@ -1,3 +1,13 @@
+const ids = ["sleep_lab", "sleep",
+  "diet_lab", "diet",
+  "exp_lab", "expenses",
+  "inc_lab", "income",
+  "exer_lab", "exercise",
+  "work_lab", "work",
+  "notes_lab", "notes",
+  "submit"];
+gridAreaStyle(ids);
+
 const form = document.querySelector('form');
 
 form.addEventListener("submit", async (event) => {

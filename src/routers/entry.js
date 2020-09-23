@@ -50,6 +50,19 @@ router.get('/entries/:date', async (req, res) => {
   }
 })
 
+router.get('/entries/recents/:amount', async (req, res) => {
+  const amount = parseInt(req.params.amount);
+  try {
+    //await goes with function call not with declaring a variable u dummy
+    const entries = await Entry.find({}).sort({"_id": -1}).limit(amount);
+    res.send(entries);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+})
+
+
+
 //update entry
 router.patch('/entries/:date', async (req, res) => {
   const date = req.params.date;
