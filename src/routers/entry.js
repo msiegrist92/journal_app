@@ -61,6 +61,16 @@ router.get('/entries/recents/:amount', async (req, res) => {
   }
 })
 
+router.get('/entries/months/:month', async (req, res) => {
+  let month = req.params.month;
+  try {
+    const entries = await Entry.findByMonth(month)
+    res.send(entries);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+})
+
 
 
 //update entry

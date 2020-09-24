@@ -20,6 +20,16 @@
   margin: 2% auto;
 }
 
+#num_input {
+  display: grid;
+  grid-gap: 1.5rem;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    "num_lab num"
+    "go go";
+}
+
 #notes_display {
   width: 75%;
   margin: 2% auto;
@@ -44,4 +54,24 @@ tr {
 
 .notes_selected {
   background-color: rgba(50, 200, 137, 0.6);
+}
+
+#num_lab {
+  justify-self: end;
+  font-size: 1rem;
+  width: 30%;
+}
+
+#num {
+  width: 30%;
+}
+
+#go {
+  width: 20%;
+  margin: 0 auto;
+  background-color: rgba(50, 200, 137, 0.6);
+}
+
+#go:hover {
+  background-color: rgba(50, 200, 137, 0.3);
 }

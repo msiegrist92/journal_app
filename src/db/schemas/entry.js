@@ -55,10 +55,17 @@ const schema = new mongoose.Schema({
   //when creating an entry the date will always be the default value
   date: {
     type: String,
-    default: formatDate(new Date().toString()),
+    default: formatDate.formatDate(new Date().toString()),
     unique: true
   }
 })
+
+schema.statics.findByMonth = async function (month) {
+  //return entries where month string is exact match in date
+  return this.find({date: new RegExp(month, 'i')})
+};
+
+
 
 const Entry = mongoose.model("Entry", schema);
 

@@ -8,11 +8,23 @@
 </head>
   {{>header}}
 <body>
+
+  <div id="num_input">
+    <label id='num_lab' for='num'>Number of entries : </label>
+    <select name='num' id='num'>
+      <option value='3'>3</option>
+      <option value='4'>4</option>
+      <option value='5'>5</option>
+    </select>
+    <button id='go'>Go</button>
+  </div>
+
   <div id="btn_cont">
     <button class="date_btn date_selected" id="btn_1"></button>
     <button class="date_btn" id="btn_2"></button>
     <button class="date_btn" id="btn_3"></button>
   </div>
+
   <table>
     <tr>
       <th>Sleep</th>
@@ -27,13 +39,16 @@
       <td id="income"></td>
     </tr>
   </table>
+
   <div id="text_btns">
     <button class="txt_btn" id="work_btn">Work</button>
     <button class="txt_btn" id="exer_btn">Exercise</button>
     <button class="txt_btn notes_selected" id="gen_btn">Notes</button>
   </div>
+
   <p id="notes_display">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-  <script src="../js/create_grid.js" var gridAreaStyle;></script>
+
+  <script src="../js/create_grid.js" var gridAreaStyle; var formatDateGrid;></script>
   <script src="../js/get_recents.js"></script>
 </body>
 </html>

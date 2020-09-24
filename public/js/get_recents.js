@@ -1,4 +1,4 @@
-const btns = ['btn_1', 'btn_2', 'btn_3', "work_btn", "exer_btn", "gen_btn"];
+const btns = ["work_btn", "exer_btn", "gen_btn", "num_lab", 'num', 'go'];
 gridAreaStyle(btns);
 
 const table_elements = ["sleep", "diet", "expenses", "income"];
@@ -7,8 +7,10 @@ const note_btns = ["work_btn", "exer_btn", "gen_btn"];
 
 const date_btns = ["btn_1", "btn_2", "btn_3"];
 
-const getRecents = () => {
-  return fetch('entries/recents/3')
+const go_btn = document.getElementById('go');
+
+const getRecents = (amount) => {
+  return fetch('entries/recents/' + amount)
   .then((response) => {
     return response.json();
   }).then((entries) => entries
@@ -97,19 +99,37 @@ const dateButtonController = btn_el => {
   })
 }
 
-for (let i = 0; i < date_btns.length; i++){
-  dateButtonController(date_btns[i]);
+const establishDefaultState = (amount) => {
+  getRecents(amount).then(response => {
+    displayDates(response)
+    displayTableData(0, response)
+    changeNotes(response, 'gen_btn', 0);
+    sessionStorage.setItem('entries', JSON.stringify(response));
+  })
 }
 
 for (let i = 0; i < note_btns.length; i++){
   noteButtonController(note_btns[i]);
 }
 
-//application default state - general notes displayed and most recent journal entry is loaded into table
-//entries retrieve are storaged in browser session storage to reduce load times and amount of API reqs
-getRecents().then(response => {
-  displayDates(response)
-  displayTableData(0, response)
-  changeNotes(response, 'gen_btn', 0);
-  sessionStorage.setItem('entries', JSON.stringify(response));
+
+go_btn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const amount = document.getElementById('num').value;
+
+  if(amount == 4){
+    date_btns.push('btn_4');
+  } else if (amount == 5) {
+    date_btns.push('btn_4', 'btn_5');
+  }
+
+  formatDateGrid(amount);
+
+  for (let i = 0; i < date_btns.length; i++){
+    dateButtonController(date_btns[i]);
+  }
+
+  go_btn.setAttribute('disabled', 'disabled');
+
+  establishDefaultState(amount);
 })
