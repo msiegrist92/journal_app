@@ -9,4 +9,8 @@ router.get('/recent', async (req, res) => {
   await res.render('recent');
 })
 
+router.get('/calendar', async (req, res) => {
+  res.render('calendar');
+})
+
 module.exports = router;

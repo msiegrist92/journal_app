@@ -7,6 +7,7 @@ const ids = ["sleep_lab", "sleep",
   "notes_lab", "notes",
   "submit"];
 gridAreaStyle(ids);
+document.getElementById("date").textContent = formatDate(new Date().toString());
 
 const form = document.querySelector('form');
 
