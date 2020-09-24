@@ -6,6 +6,9 @@ const ids = ["sleep_lab", "sleep",
   "work_lab", "work",
   "notes_lab", "notes",
   "submit"];
+
+const data_els = ["sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
+
 gridAreaStyle(ids);
 document.getElementById("date").textContent = formatDate(new Date().toString());
 
@@ -13,23 +16,12 @@ const form = document.querySelector('form');
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  let sleep = document.getElementById("sleep").value;
-  let diet = document.getElementById("diet").value;
-  let expenses = document.getElementById("expenses").value;
-  let income = document.getElementById("income").value;
-  let exercise = document.getElementById("exercise").value;
-  let notes = document.getElementById("notes").value;
-  let work = document.getElementById('work').value;
-
-  const entry = {
-    sleep,
-    diet,
-    expenses,
-    income,
-    exercise,
-    notes,
-    work
+  const entry = {};
+  for(el of data_els){
+    let val = document.getElementById(el).value;
+    entry[el] = val;
   }
+
 
   const data = JSON.stringify(entry);
 

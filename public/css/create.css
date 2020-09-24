@@ -11,7 +11,7 @@ form {
   grid-gap: 1.5rem;
   grid-template-areas:
     "sleep_lab sleep diet_lab diet"
-    "inc_lab income exp_lab expenses"
+    "exp_lab expenses inc_lab income"
     "exer_lab exer_lab exercise exercise"
     "work_lab work_lab work work"
     "notes_lab notes_lab notes notes"

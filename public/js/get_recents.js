@@ -70,76 +70,46 @@ const checkNotes = (note_buttons) => {
   }
 }
 
-document.getElementById('work_btn').addEventListener('click', (e) => {
-  e.preventDefault();
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    changeNotes(response, 'work_btn', date_index);
-  })
-  toggleButtonSelected(note_btns, "work_btn", 'notes_selected')
-})
+const noteButtonController = note_btn => {
+  document.getElementById(note_btn).addEventListener('click', (e) => {
+    e.preventDefault();
+    let entries = JSON.parse(sessionStorage.entries);
 
-document.getElementById('exer_btn').addEventListener('click', (e) => {
-  e.preventDefault();
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    changeNotes(response, 'exer_btn', date_index);
-  })
-  toggleButtonSelected(note_btns, 'exer_btn', 'notes_selected');
-})
+    toggleButtonSelected(note_btns, note_btn, 'notes_selected')
 
-document.getElementById('gen_btn').addEventListener('click', (e) => {
-  e.preventDefault();
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    changeNotes(response, 'gen_btn', date_index);
+    let date_index = getDateIndex(entries, checkDate(date_btns));
+    changeNotes(entries, note_btn, date_index);
   })
-  toggleButtonSelected(note_btns, "gen_btn", "notes_selected");
-})
+}
 
-//on selecting date buttons
-//toggle selected class
-//display data for the date selected
-//retain note selection when updating data
-document.getElementById('btn_1').addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleButtonSelected(date_btns, 'btn_1', 'date_selected');
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    displayTableData(date_index, response);
+const dateButtonController = btn_el => {
+  document.getElementById(btn_el).addEventListener('click', (e) => {
+    e.preventDefault();
+    let entries = JSON.parse(sessionStorage.entries)
+
+    toggleButtonSelected(date_btns, btn_el, 'date_selected');
+
+    let date_index = getDateIndex(entries, checkDate(date_btns));
+    displayTableData(date_index, entries);
+
     let note_selected = checkNotes(note_btns);
-    changeNotes(response, note_selected, date_index);
+    changeNotes(entries, note_selected, date_index);
   })
-})
+}
 
-document.getElementById('btn_2').addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleButtonSelected(date_btns, 'btn_2', 'date_selected');
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    displayTableData(date_index, response);
-    let note_selected = checkNotes(note_btns);
-    changeNotes(response, note_selected, date_index);
-  })
-})
+for (let i = 0; i < date_btns.length; i++){
+  dateButtonController(date_btns[i]);
+}
 
-document.getElementById('btn_3').addEventListener('click', (e) => {
-  e.preventDefault();
-  toggleButtonSelected(date_btns, 'btn_3', 'date_selected');
-  getRecents().then(response => {
-    let date_index = getDateIndex(response, checkDate(date_btns));
-    displayTableData(date_index, response);
-    let note_selected = checkNotes(note_btns);
-    changeNotes(response, note_selected, date_index);
-  })
-})
-
-
-
+for (let i = 0; i < note_btns.length; i++){
+  noteButtonController(note_btns[i]);
+}
 
 //application default state - general notes displayed and most recent journal entry is loaded into table
+//entries retrieve are storaged in browser session storage to reduce load times and amount of API reqs
 getRecents().then(response => {
-    displayDates(response)
-    displayTableData(0, response)
-    changeNotes(response, 'gen_btn', 0);
-  console.log(response)})
+  displayDates(response)
+  displayTableData(0, response)
+  changeNotes(response, 'gen_btn', 0);
+  sessionStorage.setItem('entries', JSON.stringify(response));
+})
