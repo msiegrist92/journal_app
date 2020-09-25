@@ -1,18 +1,37 @@
+/*complementary red C83270
+caribbean green 32C889
+lighter green tint hover D2F4E6
+*/
+
+body {
+  margin: 0;
+}
+
 header {
-  max-height: 100px;
+  background-color: #32c889;
+  color: white;
+  max-height: 80px;
   display: grid;
-  grid-template-columns: "20% 20% 60%";
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
   grid-template-areas:
-    "h1 p nav";
+    "branding nav";
+}
+
+#branding {
+  grid-area: branding;
 }
 
 header nav {
   grid-area: nav;
+  align-self: center;
+  justify-self: end;
+  margin-right: 2.5%;
 }
 
 header nav ul {
   display: inline-block;
+  font-size: 1.25rem;
 }
 
 header nav ul li {
@@ -22,14 +41,28 @@ header nav ul li {
 
 header nav ul li a {
   text-decoration: none;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+header nav ul li a:hover {
+  color: #6ADAAB;
 }
 
 header h1 {
   display: inline-block;
   grid-area: h1;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
 }
 
-header p {
+header h2 {
   display: inline-block;
-  grid-area: p;
+  font-family: 'Cabin', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  align-self: center;
 }
