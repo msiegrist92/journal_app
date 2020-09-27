@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/search.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&display=swap" rel="stylesheet">
+</head>
+  {{>header}}
+<body>
+
+  <form>
+    <input placeholder='mm/dd/yy' type='text' name='date' id="date_inp">
+    <input type='submit' name='submit' id='submit'>
+  </form>
+
+  <h1 id="date"></h1>
+  <div id="entry_cont">
+    <h2>Exercise</h2>
+    <h2>Sleep</h2>
+    <p id='exercise'></p>
+    <h3 id='sleep'></h3>
+
+    <h2>Work</h2>
+    <h2>Diet</h2>
+    <p id='work'></p>
+    <h3 id='diet'></h3>
+
+    <h2>Notes</h2>
+    <h2>Expenses</h2>
+    <p id='notes'></p>
+    <h3 id='expenses'></h3>
+
+    <h2></h2>
+    <h2>Income</h2>
+    <p></p>
+    <h2 id='income'>{{income}}</h2>
+  </div>
+  <script src="../js/date_regex.js"var mmddyyToStr; var verifyFormat;></script>
+  <script src="../js/search_date.js"></script>
+</body>
+</html>

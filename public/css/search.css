@@ -1,0 +1,1 @@
+const entries = await fetch('/entries/')
