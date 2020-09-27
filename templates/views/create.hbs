@@ -10,9 +10,9 @@
 </head>
   {{>header}}
 <body>
-
-  <h2 id="date"></h2>
-  <form method='post' action="/entries">
+  <form>
+  <label id="date_lab" for='date'>Date : </label>
+  <input type='text' id='date' name='date' class='small_input' required>
 
     <label id='sleep_lab' for="sleep">Sleep: </label>
     <select class ="small_input" id="sleep" name="sleep" required>
@@ -61,8 +61,9 @@
 
     <p id='response'></p>
   </form>
+  <script src="../js/months_objs.js" var months;></script>
   <script src="../js/create_grid.js" var gridAreaStyle;></script>
-  <script src="../js/date_regex.js" var formateDate;></script>
+  <script src="../js/date_regex.js" var formatDate; var formatTommddyy; var mmddyyToStr; var verifyFormat;></script>
   <script src="../js/create_entry.js"></script>
 </body>
 </html>

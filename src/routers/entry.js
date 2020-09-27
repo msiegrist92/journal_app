@@ -14,7 +14,8 @@ router.post('/entries', json_parser, async (req, res) => {
     income: req.body.income,
     exercise: req.body.exercise,
     work: req.body.work,
-    notes: req.body.notes
+    notes: req.body.notes,
+    date: req.body.date
   });
 
   try {

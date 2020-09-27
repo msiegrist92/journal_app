@@ -7,15 +7,17 @@ form {
   max-width: 960px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(6, auto);
+  grid-template-rows: repeat(8, auto);
   grid-gap: 1.5rem;
   grid-template-areas:
+  ". date_lab date ."
     "sleep_lab sleep diet_lab diet"
     "exp_lab expenses inc_lab income"
     "exer_lab exer_lab exercise exercise"
     "work_lab work_lab work work"
     "notes_lab notes_lab notes notes"
-    ". submit submit .";
+    ". submit submit ."
+    ". response response .";
 }
 
 
