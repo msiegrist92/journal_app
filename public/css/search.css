@@ -1,1 +1,54 @@
-const entries = await fetch('/entries/')
+#grid_cont {
+  display: grid;
+  margin: 0 auto;
+  max-width: 1200px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "form form"
+    "date date"
+    "entry_cont entry_cont"
+}
+
+#entry_cont {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 100%;
+}
+
+#val_cont {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: repeat(4, 1fr);
+  align-self: center;
+}
+
+h1, h2, h3 {
+  text-align: center;
+  font-family: "Ubuntu", sans-serif;
+}
+
+p {
+  border: 3px solid #32C889;
+  padding: 1.25rem;
+  font-family: "Cabin", serif;
+}
+
+form {
+  margin: 5% auto 2% auto;
+}
+
+#date_inp {
+  font-family: "Cabin", serif;
+  font-size: 1rem;
+}
+
+#submit {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  background-color: #E1848C;
+  border-color: #E1848C;
+  color: white;
+}

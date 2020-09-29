@@ -22,29 +22,41 @@ header {
   grid-area: branding;
 }
 
+.nav_img {
+  height: 60px;
+  width: auto;
+  float: right;
+}
+
 header nav {
   grid-area: nav;
+  margin-right: 7.5%;
   align-self: center;
-  justify-self: end;
-  margin-right: 2.5%;
 }
 
 header nav ul {
-  display: inline-block;
   font-size: 1.25rem;
+  padding: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: absolute;
+  right: 3%;
+  top: 60px;
+  background-color: #84CDC2;
+  transition: 1.5s;
 }
 
 header nav ul li {
   text-decoration: none;
-  display: inline-block;
+  display: block;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 header nav ul li a {
   text-decoration: none;
   color: white;
   font-family: 'Cabin', sans-serif;
-  padding-left: .75rem;
-  padding-right: .75rem;
 }
 
 header nav ul li a:hover {

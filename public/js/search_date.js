@@ -1,5 +1,8 @@
-const data_els = ['date', 'diet', 'exercise', 'expenses', 'income',
-  'notes', 'sleep', 'work'];
+const grid_areas = ['date_inp', 'submit', 'date', 'entry_cont', 'form'];
+gridAreaStyle(grid_areas);
+
+const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'work',
+  'notes'];
 
 
 //submit button retrieves date and formats it to correct URI encoding
@@ -21,7 +24,6 @@ const getEntries = async (date) => {
       document.getElementById(el).textContent = json[0][el];
     }
 
-    console.log(json)
   }).catch((err) => {
     document.getElementById('date').textContent = 'no entry found for ' + date;
 })
@@ -39,5 +41,3 @@ form.addEventListener('submit', (e) => {
     document.getElementById("date").textContent = "invalid date format";
   }
 })
-
-console.log(verifyFormat('09/20/123401'));

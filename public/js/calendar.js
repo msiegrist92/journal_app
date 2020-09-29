@@ -38,16 +38,15 @@ const defineCalendar = (month, year) => {
   }
 }
 
-const getEntries = () => {
-  return fetch('entries')
+const getEntries = (month_name) => {
+  return fetch('entries/months/' + month_name)
   .then((response) => {
     return response.json();
   }).then((entries) => entries
 )}
 
-const isInMonth = (entry, year, month) => {
-  if(getYear(entry.date) === year &&
-    getMonth(entry.date) === month){
+const isInYear = (entry, year) => {
+  if (getYear(entry.date) === year){
       return true
   } else {
     return false;
@@ -90,10 +89,10 @@ const showEntriesMade = (today) => {
   let cal_year = getYear(today_str);
   let in_month = document.querySelectorAll('.in_month');
 
-  getEntries().then(response => {
+  getEntries(cal_month).then(response => {
     let matches = [];
     for (entry of response){
-      if(isInMonth(entry, cal_year, cal_month)){
+      if(isInYear(entry, cal_year)){
         matches.push(entry);
       }
     }

@@ -32,7 +32,6 @@ const verifyFormat = date => {
 }
 
 const mmddyyToStr = date => {
-  console.log(date);
   date = date.split('/');
   date[0] -= 1
   date[2] = '20' + date[2];
