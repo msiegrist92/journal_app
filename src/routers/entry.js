@@ -76,10 +76,10 @@ router.get('/entries/months/:month', async (req, res) => {
 
 //update entry
 router.patch('/entries/:date', async (req, res) => {
+  console.log(req.body)
   const date = req.params.date;
   const allowed = ['sleep', 'diet', 'expenses', 'income', 'exercise',
-  'work', 'date', 'notes'];
-
+  'work', 'notes'];
   //ensures req.body only contains keys defined in schema
   const input_attempt = Object.keys(req.body);
   const isValid = input_attempt.every((keys) => allowed.includes(keys));
@@ -92,7 +92,6 @@ router.patch('/entries/:date', async (req, res) => {
     //find({}) returns an array
     const entry = await Entry.find({date});
     input_attempt.forEach((key) => entry[0][key] = req.body[key]);
-    console.log(entry)
     await entry[0].save();
     res.status(200).send(entry);
   } catch (err) {

@@ -5,6 +5,8 @@ const hbs = require('hbs');
 const bodyParser = require('body-parser')
 
 const app = express();
+app.use(bodyParser.json());
+app.use(express.json());
 
 app.set('view engine', 'hbs');
 app.set('views', "templates/views");

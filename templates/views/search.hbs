@@ -14,25 +14,25 @@
 
     <form id='form'>
       <input placeholder='mm/dd/yy' type='text' name='date' id="date_inp">
-      <input type='submit' name='submit' id='submit'>
+      <input class='button' type='submit' name='submit' id='submit'>
     </form>
 
     <h1 id="date"></h1>
 
     <div id="entry_cont">
 
-      <div id="notes_cont">
+      <div class="notes_cont">
         <h2 id="exer_lab">Exercise</h2>
-        <p id='exercise'></p>
+        <p class='field' id='exercise'></p>
 
         <h2 id='work_lab'>Work</h2>
-        <p id='work'></p>
+        <p class='field' id='work'></p>
 
         <h2 id="notes_lab">Notes</h2>
-        <p id='notes'></p>
+        <p class='field' id='notes'></p>
       </div>
 
-      <div id="val_cont">
+      <div class="val_cont">
         <h2 id="sleep_lab">Sleep</h2>
         <h2 id="diet_lab">Diet</h2>
 
@@ -47,10 +47,63 @@
       </div>
 
     </div>
+    <button class='button' id="edit">Edit Entry</button>
   </div>
+
+  <form style="right: -3000px; left: 1000px;"id="edit_cont">
+    <div class="notes_cont">
+      <h2>Exercise</h2>
+      <textarea class='field' name='exercise' rows=6 cols=50></textarea>
+
+      <h2>Work</h2>
+      <textarea  class='field'name='work' rows=6 cols=50></textarea>
+
+      <h2>Notes</h2>
+      <textarea class='field' name='notes' rows=6 cols=50></textarea>
+    </div>
+
+    <div class="val_cont">
+      <h2>Sleep</h2>
+      <h2>Diet</h2>
+
+      <select required  class='field' name="sleep">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+      </select>
+      <select required  class='field' name="diet">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+        <option value=8>8</option>
+        <option value=9>9</option>
+        <option value=10>10</option>
+      </select>
+
+      <h2>Expenses</h2>
+      <h2>Income</h2>
+
+      <input required class='field' type='text' name="expenses">
+      <input required class='field' type='text' name="income">
+    </div>
+    <input class='button' id='edit_submit' type='submit'>
+  </form>
+
   <script src="../js/nav_menu.js"></script>
   <script src="../js/create_grid.js" var gridAreaStyle; ></script>
   <script src="../js/date_regex.js"var mmddyyToStr; var verifyFormat;></script>
   <script src="../js/search_date.js"></script>
+  <script src="../js/edit_entry.js"></script>
 </body>
 </html>
