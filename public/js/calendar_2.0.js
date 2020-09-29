@@ -1,41 +1,20 @@
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
+const month = months[today.getMonth()].abbr;
+document.getElementById('month').textContent = months[today.getMonth()].name;
 
-const buildCalendar = (first_day, month_length) => {
-  for(let i = 0; i < month_length; i++){
-    days_list[first_day + i].classList.toggle('in_month');
-    if (i < 9){
-
-      //single digit days have 0 added to match the string content of database entries
-      days_list[first_day + i].textContent += ' ' + '0' + (i + 1);
-
-    } else {
-      days_list[first_day + i].textContent += ' ' + (i + 1);
-    }
+const fillFirstWeek = () => {
+  let first_day = document.querySelector('.day').textContent.split('\n')[1]
+  let to_fill = days.indexOf(first_day);
+  let parent_element = document.getElementById('days_cont');
+  for(let i = 0; i < to_fill; i++){
+    parent_element.prepend(document.createElement('div'));
   }
 }
 
 const highlightToday = (today) => {
-  let today_element = days_list[(today.getDate() + 1)];
+  let today_element = days_list[(today.getDate() - 1)];
   today_element.classList.toggle('today');
-}
-
-const defineCalendar = (month, year) => {
-  let month_length = months[month].days;
-
-  let first_month = new Date(year, month, 1);
-  let first_day = first_month.getDay();
-
-  buildCalendar(first_day, month_length);
-
-  document.getElementById('month').textContent = months[month].name;
-
-  //removing text from .day elements which are not included in calendar
-  for(let days of days_list){
-    if (days.classList.length === 1){
-      days.textContent = '';
-    }
-  }
 }
 
 const getEntries = (month_name) => {
@@ -53,6 +32,8 @@ const isInYear = (entry, year) => {
   }
 }
 
+
+//date is the element corresponding to the day of the entry
 const addEntryData = (date, match) => {
   date.style.backgroundColor = 'rgba(33, 186, 43, 0.5)';
 
@@ -87,7 +68,6 @@ const showEntriesMade = (today) => {
   let today_str = today.toString();
   let cal_month = getMonth(today_str);
   let cal_year = getYear(today_str);
-  let in_month = document.querySelectorAll('.in_month');
 
   getEntries(cal_month).then(response => {
     let matches = [];
@@ -102,18 +82,12 @@ const showEntriesMade = (today) => {
     displayMonthFinances(total_exp, total_inc);
 
     for (match of matches){
-      for(date of in_month){
-        let day = date.textContent;
-        if (getDate(match.date) == getDate(day)){
-          addEntryData(date, match)
-        }
-      }
+      let date = getDate(match.date);
+      addEntryData(days_list[date - 1], match)
     }
   })
 }
 
-
-
-defineCalendar(today.getMonth(), today.getFullYear());
-highlightToday(today);
+fillFirstWeek();
 showEntriesMade(today);
+highlightToday(today);

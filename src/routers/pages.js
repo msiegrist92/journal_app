@@ -1,4 +1,5 @@
 const express = require('express');
+const calendar = require('../utils/calendar.js');
 const router = new express.Router();
 const app = express();
 
@@ -39,18 +40,13 @@ router.get('/recent', async (req, res) => {
     option_2: "Calendar",
     option_3: "Recents",
     option_4: "Search",
-    option_4: "Log Out"
+    option_5: "Log Out"
   });
 })
 
 router.get('/calendar', async (req, res) => {
-  res.render('calendar', {
-    option_1: "Create",
-    option_2: "Calendar",
-    option_3: "Recents",
-    option_4: "Search",
-    option_4: "Log Out"
-  });
+  let cal = calendar.createCal();
+  res.render('calendar', cal);
 })
 
 module.exports = router;
