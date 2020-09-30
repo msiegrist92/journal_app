@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/recent.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&display=swap" rel="stylesheet">
 </head>
   {{>header}}
 <body>
@@ -16,7 +18,7 @@
       <option value='4'>4</option>
       <option value='5'>5</option>
     </select>
-    <button id='go'>Go</button>
+    <button class='button' id='go'>Retrieve</button>
   </div>
 
   <div id="btn_cont">
@@ -26,7 +28,7 @@
   </div>
 
   <table>
-    <tr>
+    <tr class='top_row'>
       <th>Sleep</th>
       <th>Diet</th>
       <th>Expenses</th>
@@ -46,8 +48,9 @@
     <button class="txt_btn notes_selected" id="gen_btn">Notes</button>
   </div>
 
-  <p id="notes_display">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <p class='field' id="notes_display"></p>
 
+  <script src="../js/nav_menu.js"></script>
   <script src="../js/create_grid.js" var gridAreaStyle; var formatDateGrid;></script>
   <script src="../js/get_recents.js"></script>
 </body>

@@ -12,10 +12,10 @@
 <body>
   <form>
   <label id="date_lab" for='date'>Date : </label>
-  <input type='text' id='date' name='date' class='small_input' required>
+  <input class='field' type='text' id='date' name='date' class='small_input' required>
 
     <label id='sleep_lab' for="sleep">Sleep: </label>
-    <select class ="small_input" id="sleep" name="sleep" required>
+    <select class ="small_input field" id="sleep" name="sleep" required>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -29,7 +29,7 @@
     </select>
 
     <label id="diet_lab" for="diet">Diet: </label>
-    <select class ="small_input" id="diet" name="diet" required>
+    <select class ="small_input field" id="diet" name="diet" required>
       <option value="1">1</option>
       <option value="2">2</option>
       <option value="3">3</option>
@@ -43,24 +43,25 @@
     </select>
 
     <label id="exp_lab" for="expenses">Expenses :</label>
-    <input class ="small_input" type="text" id="expenses" name="expenses" required>
+    <input class ="small_input field" type="text" id="expenses" name="expenses" required>
 
     <label id="inc_lab" for="income">Income :</label>
-    <input class ="small_input" type="text" id="income" name="income" required>
+    <input class ="small_input field" type="text" id="income" name="income" required>
 
     <label class="txt_label" id="exer_lab"for="exercise">Exercise</label>
-    <textarea id="exercise" name="exercise" rows="8" cols="40" required></textarea>
+    <textarea class='field' id="exercise" name="exercise" rows="8" cols="40" required></textarea>
 
     <label class="txt_label" id="work_lab" for="work">Work</label>
-    <textarea id="work" name="work" rows="8" cols="40" required></textarea>
+    <textarea class='field' id="work" name="work" rows="8" cols="40" required></textarea>
 
     <label class="txt_label" id="notes_lab" for="notes">Notes</label>
-    <textarea id="notes" name="notes" rows="8" cols="40" required></textarea>
+    <textarea class='field' id="notes" name="notes" rows="8" cols="40" required></textarea>
 
-    <input id="submit" type="submit" value="submit">
+    <input class='button' id="submit" type="submit" value="submit">
 
-    <p id='response'></p>
+    <p id='response'>Entry created!</p>
   </form>
+  <script src="../js/nav_menu.js"></script>
   <script src="../js/months_objs.js" var months;></script>
   <script src="../js/create_grid.js" var gridAreaStyle;></script>
   <script src="../js/date_regex.js" var formatDate; var formatTommddyy; var mmddyyToStr; var verifyFormat;></script>

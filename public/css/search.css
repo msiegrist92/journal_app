@@ -45,15 +45,6 @@ form {
   font-size: 1rem;
 }
 
-.button {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 1rem;
-  background-color: #E1848C;
-  border-color: #E1848C;
-  color: white;
-  padding: .8rem;
-}
-
 #edit {
   grid-area: edit;
   display: block;
@@ -63,9 +54,6 @@ form {
   margin: 5% auto 2% auto;
 }
 
-.button:hover {
-  background-color: #EAA7AD;
-}
 
 #edit_cont {
   background-color: rgba(219, 246, 234, 0.95);

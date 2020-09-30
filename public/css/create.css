@@ -3,7 +3,11 @@ textarea {
 }
 
 form {
-  margin: 0 auto;
+  background-color: #E5F9F1;
+  border: 3px solid #269D6B;
+  border-radius: 8px;
+  padding: .5rem;
+  margin: 1.5% auto 1.5% auto;
   max-width: 960px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -24,11 +28,14 @@ form {
 label {
   text-align: center;
   font-size: 1.5rem;
+  font-family: 'Ubuntu', sans-serif;
+  align-self: center;
 }
 
 textarea {
   width: 80%;
   margin-right: 20%;
+  font-family: "Cabin", serif;
 }
 
 .txt_label {
@@ -37,6 +44,31 @@ textarea {
 }
 
 .small_input {
-  width: 80%;
+  width: 72.5%;
   margin-right: 20%;
+}
+
+input {
+  font-family: "Cabin", serif;
+}
+
+.button {
+  font-size: 1.5rem;
+  width: 60%;
+  margin: 0 auto;
+}
+
+select {
+  font-family: "Cabin", serif;
+  font-size: 1rem;
+}
+
+.field {
+  padding: .75rem;
+}
+
+#response {
+  font-family: "Cabin", sans-serif;
+  margin: 0 auto;
+  font-size: 1.25rem;
 }

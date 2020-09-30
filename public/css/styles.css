@@ -78,3 +78,24 @@ header h2 {
   font-size: 1rem;
   align-self: center;
 }
+
+.button {
+  font-family: "Ubuntu", sans-serif;
+  font-size: 1rem;
+  background-color: #E1848C;
+  border-color: #E1848C;
+  color: white;
+  padding: .8rem;
+}
+.button:hover {
+  background-color: #EAA7AD;
+}
+
+.field {
+  resize: none;
+  border: 3px solid #32C889;
+  padding: 1.25rem;
+  font-family: "Cabin", serif;
+  margin: 0 auto;
+  display: block;
+}
