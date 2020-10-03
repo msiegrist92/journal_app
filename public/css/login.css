@@ -1,0 +1,31 @@
+header nav {
+  grid-area: nav;
+  margin-right: 7.5%;
+  align-self: center;
+  justify-self: end;
+}
+
+header nav ul {
+  font-size: 1.25rem;
+  background-color: #32c889;
+  padding-right: 0;
+  position: static;
+  transition: none;
+}
+
+header nav ul li {
+  text-decoration: none;
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+}
+
+header nav ul li a:hover {
+  color: #629881;
+}

@@ -3,13 +3,11 @@ const User = require('../db/schemas/user.js');
 
 const auth = async (req, res, next) => {
   try {
-
     const token = req.header('Authorization').replace('Bearer ', '');
-    const decoded = jwt.verify(token, 'bigfluffykitter');
+    const decoded = jwt.verify(token, process.env.TOKEN_SECRET);
     //user's id is stored on the token
     //does user have the current token?
     const user = await User.findOne({_id: decoded._id, 'tokens.token':token});
-
     if (!user){
       //this will trigger catch block
       throw new Error();
@@ -23,5 +21,7 @@ const auth = async (req, res, next) => {
     res.status(401).send({error: "Pls auth"});
   }
 }
+
+const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
 
 module.exports = auth;

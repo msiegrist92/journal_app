@@ -1,3 +1,6 @@
+const pop = require('../utils/populate_entries.js');
+const User = require('../db/schemas/user.js');
+const auth = require('../utils/auth.js');
 const express = require('express');
 const Entry = require('../db/schemas/entry.js');
 const router = new express.Router();
@@ -5,9 +8,10 @@ const bodyParser = require('body-parser')
 const json_parser = bodyParser.json();
 
 //create a new entry
-router.post('/entries', json_parser, async (req, res) => {
+router.post('/entries', auth, json_parser, async (req, res) => {
   //passing req.body to entry schema
   const entry = new Entry({
+    owner: req.user._id,
     sleep: req.body.sleep,
     diet: req.body.diet,
     expenses: req.body.expenses,
@@ -27,11 +31,10 @@ router.post('/entries', json_parser, async (req, res) => {
 })
 
 //retrieve all entries
-router.get('/entries', async (req, res) => {
+router.get('/entries', auth, async (req, res) => {
 
   try {
-    //await goes with function call not with declaring a variable u dummy
-    const entries = await Entry.find({});
+    const entries = await pop.getAll(req.user._id);
     res.status(200).send(entries);
   } catch (error) {
     res.status(400).send(error);
@@ -40,33 +43,32 @@ router.get('/entries', async (req, res) => {
 
 //will need to URI encode date string
 //find entry by data
-router.get('/entries/:date', async (req, res) => {
-  const date = req.params.date;
+router.get('/entries/:date', auth, async (req, res) => {
+  const date_req = req.params.date;
 
   try {
-    const entry = await Entry.find({date});
-    res.status(200).send(entry);
+    const entries = await pop.getByDate(req.user._id, date_req)
+    res.status(200).send(entries);
   } catch (error) {
     res.status(400).send(error);
   }
 })
 
-router.get('/entries/recents/:amount', async (req, res) => {
+router.get('/entries/recents/:amount', auth,  async (req, res) => {
   const amount = parseInt(req.params.amount);
   try {
-    //await goes with function call not with declaring a variable u dummy
-    const entries = await Entry.find({}).sort({"_id": -1}).limit(amount);
+    const entries = await pop.getRecents(req.user._id, amount)
     res.send(entries);
   } catch (error) {
     res.status(400).send(error);
   }
 })
 
-router.get('/entries/months/:month', async (req, res) => {
+router.get('/entries/months/:month', auth, async (req, res) => {
   let month = req.params.month;
   try {
-    const entries = await Entry.findByMonth(month)
-    res.send(entries);
+    const entries = await pop.getByMonth(req.user._id, month);
+    res.status(200).send(entries);
   } catch (e) {
     res.status(500).send(e);
   }
@@ -75,38 +77,28 @@ router.get('/entries/months/:month', async (req, res) => {
 
 
 //update entry
-router.patch('/entries/:date', async (req, res) => {
-  console.log(req.body)
+router.patch('/entries/:date', auth, json_parser, async (req, res) => {
   const date = req.params.date;
-  const allowed = ['sleep', 'diet', 'expenses', 'income', 'exercise',
-  'work', 'notes'];
-  //ensures req.body only contains keys defined in schema
-  const input_attempt = Object.keys(req.body);
-  const isValid = input_attempt.every((keys) => allowed.includes(keys));
-
+  const isValid = pop.verifyUpdate(req.body);
   if (!isValid){
     return res.status(400).send("invalid update property");
   }
   try {
-    //for each key input to update - change entry to req.body property
-    //find({}) returns an array
-    const entry = await Entry.find({date});
-    input_attempt.forEach((key) => entry[0][key] = req.body[key]);
-    await entry[0].save();
-    res.status(200).send(entry);
+    await pop.updateEntry(req.user._id, date, req.body);
+    res.status(200).send('user updated');
   } catch (err) {
     res.status(500).send(err);
   }
 })
 
 //delete one entry by date
-router.delete('/entries/:date', async (req, res) => {
+router.delete('/entries/:date', auth, json_parser, async (req, res) => {
   const date = req.params.date;
-  const allowed = 'date';
 
   try {
-    const entry = await Entry.findOneAndDelete({date});
-    res.status(200).send(entry);
+    const entry = await pop.getByDate(req.user._id, date);
+    await entry[0].remove();
+    res.status(200).send(entry[0]);
   } catch (err) {
     res.status(500).send(err);
   }

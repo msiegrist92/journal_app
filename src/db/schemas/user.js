@@ -2,8 +2,13 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Schema = mongoose.Schema;
 
-const schema = new mongoose.Schema({
+
+const user_schema = Schema({
+
+  _id: Schema.Types.ObjectId,
+
   email : {
     lowercase: true,
     unique: true,
@@ -39,9 +44,10 @@ const schema = new mongoose.Schema({
 
 //toJSON runs whenever object is parsed as toJSON
 //declared as regular function so it binds to .this of schema instance
-schema.methods.toJSON = function () {
+user_schema.methods.toJSON = function () {
   const user = this;
   const user_obj = user.toObject();
+  delete user_obj._id;
   delete user_obj.password;
   delete user_obj.tokens;
 
@@ -49,7 +55,7 @@ schema.methods.toJSON = function () {
 }
 
 //middleware which hashes password before creating or modifying
-schema.pre('save', async function(next) {
+user_schema.pre('save', async function(next) {
   const user = this;
   if (user.isModified('password')){
     user.password = await bcrypt.hash(user.password, 8);
@@ -58,17 +64,17 @@ schema.pre('save', async function(next) {
 })
 
 //instance method which generates and returns an auth token upon login or creation
-schema.methods.generateAuthToken = async function() {
+user_schema.methods.generateAuthToken = async function() {
   const user = this;
   //token holds user's id
-  const token = jwt.sign({_id: user._id.toString()}, 'bigfluffykitter');
+  const token = jwt.sign({_id: user._id.toString()}, process.env.TOKEN_SECRET);
   //token is added to tokens array of user's document
   user.tokens = user.tokens.concat({token});
   await user.save();
   return token;
 }
 
-schema.statics.findUser = async (email, password) => {
+user_schema.statics.findUser = async (email, password) => {
   const user = await User.findOne({email});
 
   if(!user){
@@ -84,6 +90,12 @@ schema.statics.findUser = async (email, password) => {
   return user;
 }
 
-const User = mongoose.model("User", schema);
+user_schema.virtual('entries', {
+  ref: 'Entry',
+  localField: '_id',
+  foreignField: 'owner',
+})
 
+
+const User = mongoose.model("User", user_schema);
 module.exports = User;

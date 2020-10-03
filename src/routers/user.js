@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const User = require('../db/schemas/user.js');
 const router = new express.Router();
@@ -6,8 +7,9 @@ const json_parser = bodyParser.json();
 const auth = require('../utils/auth.js');
 
 
-router.post('/user', async (req, res) => {
+router.post('/user', json_parser, async (req, res) => {
   const user = new User({
+    _id: new mongoose.Types.ObjectId(),
     email: req.body.email,
     password: req.body.password
   })
@@ -23,7 +25,7 @@ router.post('/user', async (req, res) => {
   }
 })
 
-router.post('/user/login', async (req, res) => {
+router.post('/user/login', json_parser, async (req, res) => {
   try {
     const user = await User.findUser(req.body.email, req.body.password);
     const token = await user.generateAuthToken();
@@ -33,7 +35,7 @@ router.post('/user/login', async (req, res) => {
   }
 })
 
-router.post('/user/logout', auth,  async (req, res) => {
+router.post('/user/logout', json_parser, auth,  async (req, res) => {
   try {
     req.user.tokens = [];
     await req.user.save();

@@ -41,4 +41,13 @@ router.get('/calendar', async (req, res) => {
   res.render('calendar', cal);
 })
 
+router.get('/login', async (req, res) => {
+  res.render('login', {
+    link_1: '/login',
+    option_1: 'Login',
+    link_2: '/sign_up',
+    option_2: 'Sign Up'
+  });
+})
+
 module.exports = router;
