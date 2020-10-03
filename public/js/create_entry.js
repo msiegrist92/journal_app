@@ -30,10 +30,14 @@ form.addEventListener("submit", async (event) => {
 
     const data = JSON.stringify(entry);
 
+    const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+    const token = document.cookie.match(REGEXP)[0]
+
     const response = await fetch("/entries", {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        "Authorization": token
       },
       body: data
     }).then((data) => document.getElementById("response").textContent = data.statusText);

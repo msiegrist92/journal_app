@@ -10,15 +10,29 @@ const date_btns = ["btn_1", "btn_2", "btn_3"];
 const go_btn = document.getElementById('go');
 
 const getRecents = (amount) => {
-  return fetch('entries/recents/' + amount)
+  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  const token = document.cookie.match(REGEXP)[0]
+
+  return fetch('entries/recents/' + amount, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token
+    }
+  })
   .then((response) => {
     return response.json();
-  }).then((entries) => entries
+  }).then((entries) => {entries
+  console.log(entries)}
 )}
 
 const displayDates = entries => {
   for (i=0; i < entries.length; i++){
+    if(entries[i].date === null){
+      document.getElementById(date_btns[i].textContent = '');
+    } else {
     document.getElementById(date_btns[i]).textContent = entries[i].date;
+    }
   }
 }
 

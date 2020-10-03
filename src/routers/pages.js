@@ -50,4 +50,13 @@ router.get('/login', async (req, res) => {
   });
 })
 
+router.get('/sign_up', async (req, res) => {
+  res.render('sign_up', {
+    link_1: '/login',
+    option_1: 'Login',
+    link_2: '/sign_up',
+    option_2: 'Sign Up'
+  })
+})
+
 module.exports = router;

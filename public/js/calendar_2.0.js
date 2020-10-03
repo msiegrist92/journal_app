@@ -18,7 +18,15 @@ const highlightToday = (today) => {
 }
 
 const getEntries = (month_name) => {
-  return fetch('entries/months/' + month_name)
+  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  const token = document.cookie.match(REGEXP)[0]
+  return fetch('entries/months/' + month_name, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": token
+    }
+  })
   .then((response) => {
     return response.json();
   }).then((entries) => entries

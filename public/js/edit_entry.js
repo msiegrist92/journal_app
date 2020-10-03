@@ -28,12 +28,14 @@ edit_cont.addEventListener('submit', async (e) => {
   const data = JSON.stringify(entry);
   const URI_date = encodeURI(document.getElementById('date').textContent);
 
-  console.log(data);
+  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  const token = document.cookie.match(REGEXP)[0]
 
   await fetch("/entries/" + URI_date, {
     method: 'PATCH',
     headers: {
-      "Content-Type": 'application/json'
+      "Content-Type": 'application/json',
+      "Authorization": token
     },
     body: data
 }).then((response) => console.log(response));

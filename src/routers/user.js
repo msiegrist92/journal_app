@@ -14,7 +14,7 @@ router.post('/user', json_parser, async (req, res) => {
     password: req.body.password
   })
 
-
+  console.log(user);
   try {
     //password hashing is handled by the schema.pre method
     await user.save()

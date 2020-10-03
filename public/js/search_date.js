@@ -9,11 +9,16 @@ const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'wo
 //then makes get request and displays data - calls entries
 
 const getEntries = async (date) => {
+
+  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  const token = document.cookie.match(REGEXP)[0]
+
   let uri_date = encodeURI(date)
   await fetch('/entries/' + uri_date, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      "Authorization": token
     },
   }).then((data) => {
     return data.json()
