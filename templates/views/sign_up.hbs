@@ -5,17 +5,20 @@
   <meta charset='utf-8'>
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&display=swap" rel="stylesheet">
 </head>
 
 <body>
   {{>out_header}}
 
   <form>
+    <h1>Create Account</h1>
     <label for="email">Email: </label>
-    <input id="email" required type='text' name='email'>
+    <input class='field' id="email" required type='email' name='email'>
     <label for='password'>Password: </label>
-    <input id="password" required type='password' type='text' name='password'>
-    <input type='submit' value='Sign Up'>
+    <input class='field' id="password" required type='password' type='text' name='password'>
+    <input class='button' type='submit' value='Sign Up'>
     <script src='../js/login.js'></script>
   </form>
 

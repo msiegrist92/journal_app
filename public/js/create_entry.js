@@ -43,5 +43,3 @@ form.addEventListener("submit", async (event) => {
     }).then((data) => document.getElementById("response").textContent = data.statusText);
   }
 })
-
-console.log(document.cookie);

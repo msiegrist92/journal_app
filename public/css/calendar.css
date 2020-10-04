@@ -5,6 +5,8 @@
 }
 
 #days_cont {
+  width: 90%;
+  margin: 2% auto;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 120px);
@@ -30,4 +32,8 @@
 
 em {
   font-size: .8rem;
+}
+
+.day {
+  font-family: "Cabin", serif;
 }

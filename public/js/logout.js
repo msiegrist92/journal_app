@@ -1,4 +1,7 @@
+console.log('loaded')
+
 document.getElementById('logout').addEventListener('click', async (e) => {
+  console.log('event')
   e.preventDefault();
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
   const token = document.cookie.match(REGEXP)[0]
@@ -9,5 +12,8 @@ document.getElementById('logout').addEventListener('click', async (e) => {
       "Content-Type": "application/json",
       "Authorization": token
     }
-  }).then((response) => window.location = "/login")
+  }).then((response) => {
+    console.log(response);
+    window.location = "/index"
+  })
 })

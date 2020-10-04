@@ -22,12 +22,12 @@ const getRecents = (amount) => {
   })
   .then((response) => {
     return response.json();
-  }).then((entries) => {entries
-  console.log(entries)}
+  }).then((entries) => entries
 )}
 
 const displayDates = entries => {
-  for (i=0; i < entries.length; i++){
+  console.log(entries)
+  for (let i=0; i < entries.length; i++){
     if(entries[i].date === null){
       document.getElementById(date_btns[i].textContent = '');
     } else {
@@ -115,6 +115,13 @@ const dateButtonController = btn_el => {
 
 const establishDefaultState = (amount) => {
   getRecents(amount).then(response => {
+    console.log(response)
+    for(let entry of response){
+      if(entry === null){
+        let index = response.indexOf(entry);
+        response.length = index;
+      }
+    }
     displayDates(response)
     displayTableData(0, response)
     changeNotes(response, 'gen_btn', 0);
