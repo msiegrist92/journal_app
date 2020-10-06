@@ -29,7 +29,7 @@ router.post('/user/login', json_parser, async (req, res) => {
   try {
     const user = await User.findUser(req.body.email, req.body.password);
     const token = await user.generateAuthToken();
-    res.send({user, token});
+    res.status(201).send({user, token});
   } catch (err) {
     res.status(500).send(err);
   }

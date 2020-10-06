@@ -26,7 +26,6 @@ const getRecents = (amount) => {
 )}
 
 const displayDates = entries => {
-  console.log(entries)
   for (let i=0; i < entries.length; i++){
     if(entries[i].date === null){
       document.getElementById(date_btns[i].textContent = '');
@@ -115,7 +114,6 @@ const dateButtonController = btn_el => {
 
 const establishDefaultState = (amount) => {
   getRecents(amount).then(response => {
-    console.log(response)
     for(let entry of response){
       if(entry === null){
         let index = response.indexOf(entry);
@@ -129,6 +127,32 @@ const establishDefaultState = (amount) => {
   })
 }
 
+const setButtonWidth = length => {
+  if(length === 4){
+    for(let i = 0; i < date_btns.length; i++){
+      let element = document.getElementById(date_btns[i]);
+      element.style.width = '85%';
+      }
+    }
+    else if (length === 5) {
+      for(let i = 0; i < date_btns.length; i++){
+        let element = document.getElementById(date_btns[i]);
+        element.style.width = '95%';
+      }
+    }
+
+    else {
+      for(let i = 0; i < date_btns.length; i++){
+        let element = document.getElementById(date_btns[i]);
+        element.style.width = '75%';
+      }
+    }
+    if(length === 5 && mobile_recents.matches){
+      document.getElementById('btn_5').style.width = '40%';
+    }
+
+}
+
 for (let i = 0; i < note_btns.length; i++){
   noteButtonController(note_btns[i]);
 }
@@ -140,10 +164,12 @@ go_btn.addEventListener('click', (e) => {
 
   if(amount == 4){
     date_btns.push('btn_4');
+    addDateButtonDOM('btn_4')
   } else if (amount == 5) {
     date_btns.push('btn_4', 'btn_5');
+    addDateButtonDOM('btn_4')
+    addDateButtonDOM('btn_5')
   }
-
   formatDateGrid(amount);
 
   for (let i = 0; i < date_btns.length; i++){
@@ -151,6 +177,6 @@ go_btn.addEventListener('click', (e) => {
   }
 
   go_btn.setAttribute('disabled', 'disabled');
-
+  setButtonWidth(date_btns.length);
   establishDefaultState(amount);
 })

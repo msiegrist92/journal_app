@@ -6,7 +6,6 @@ register_form.addEventListener('submit', async (e) => {
     email: document.getElementsByName('email')[0].value,
     password: document.getElementsByName('password')[0].value
   })
-  console.log(data)
   await fetch('/user', {
     method: 'POST',
     headers: {
@@ -16,7 +15,6 @@ register_form.addEventListener('submit', async (e) => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    console.log(json);
     document.cookie = 'token=' + json.token;
     window.location ="/create"
   })

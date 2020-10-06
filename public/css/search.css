@@ -1,5 +1,5 @@
 body {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 #grid_cont {
@@ -19,8 +19,8 @@ body {
   width: 90%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, auto);
 }
 
 .val_cont {
@@ -29,12 +29,6 @@ body {
   grid-template-rows: repeat(4, 1fr);
   align-self: center;
 }
-
-h1, h2, h3 {
-  text-align: center;
-  font-family: "Ubuntu", sans-serif;
-}
-
 
 form {
   margin: 5% auto 2% auto;
@@ -59,9 +53,7 @@ form {
   background-color: rgba(219, 246, 234, 0.95);
   width: 70%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 100%;
+  display: block;
   padding: 0 1.5rem;
   position: absolute;
   top: 120px;
@@ -83,8 +75,78 @@ select {
 
 #edit_submit {
   width: 40%;
-  margin: 2% auto;
+  margin: 5% auto;
   display: block;
-  grid-column: 1 / 3;
   font-size: 1.25rem;
+}
+
+#back_arrow {
+  margin-top: 10px;
+  float: right;
+}
+
+.notes_cont {
+  clear: both;
+}
+
+@media only screen and (max-width: 780px){
+
+  #entry_cont {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+  }
+
+  #edit_cont {
+    display: block;
+  }
+
+  textarea {
+    width: 80%;
+    height: 80px;
+  }
+
+  #edit_cont .field {
+    padding: .25rem;
+    font-size: 1rem;
+  }
+
+  #edit_cont select {
+    width: 30%;
+  }
+
+  #edit_submit {
+    margin-top: 5%;
+  }
+
+}
+
+@media only screen and (max-width: 650px){
+  #edit_cont {
+    margin-bottom: 15%;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  #edit {
+    width: 60%;
+  }
+
+  #edit_cont {
+    width: 90%;
+    padding: 0 2.5%;
+  }
+
+  #edit_cont .val_cont {
+    width: 95%;
+    margin: 0 auto;
+  }
+
+  .val_cont .field {
+    width: 80%;
+    padding: 4px;
+  }
+
+  #edit_cont select {
+    width: 60%;
+  }
 }

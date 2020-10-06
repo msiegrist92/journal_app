@@ -26,7 +26,7 @@
   margin: 2% auto;
   display: grid;
   grid-gap: 1.5rem;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(2, auto);
   grid-template-areas:
     "num_lab num"
@@ -100,4 +100,68 @@ select {
 
 #num_lab {
   font-size: 1.25rem;
+}
+
+@media only screen and (max-width: 1000px){
+  #num_lab {
+    width: 50%;
+  }
+
+  #num {
+    width: 50%;
+  }
+
+  #btn_cont, #text_btns {
+    width: 90%;
+  }
+
+  table {
+    width: 40%;
+  }
+
+  .txt_btn {
+    width: 90%;
+  }
+
+}
+
+@media only screen and (max-width: 660px){
+  button{
+    font-size: 1rem;
+  }
+}
+
+@media only screen and (max-width: 550px){
+
+  .txt_btn {
+    width: 100%;
+  }
+
+  #num_lab {
+    width: 80%;
+  }
+
+  #go {
+    width: 40%;
+    font-size: 1rem;
+  }
+
+  #btn_cont {
+    width: 100%;
+    grid-gap: .5rem;
+    margin: 5% auto;
+  }
+
+  #btn_cont button {
+    font-size: .75rem;
+  }
+
+  table {
+    width: 80%;
+    margin: 5% auto;
+  }
+
+  table td {
+    padding: .5rem;
+  }
 }

@@ -80,16 +80,19 @@ input {
 
   form {
     width: 90%;
-    grid-template-rows: repeat(10, auto);
+    grid-template-rows: repeat(13, auto);
     grid-template-areas:
     "date_lab date_lab date date"
     "sleep_lab sleep_lab sleep sleep"
     "diet_lab diet_lab diet diet"
     "exp_lab exp_lab expenses expenses"
     "inc_lab inc_lab income income"
-    "exer_lab exer_lab exercise exercise"
-    "work_lab work_lab work work"
-    "notes_lab notes_lab notes notes"
+    " . exer_lab exer_lab ."
+    "exercise exercise exercise exercise"
+    ". work_lab work_lab ."
+    "work work work work"
+    ". notes_lab notes_lab ."
+    "notes notes notes notes"
     "submit submit submit submit"
     ". response response ."
   }

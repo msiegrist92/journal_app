@@ -43,7 +43,7 @@ const isInYear = (entry, year) => {
 
 //date is the element corresponding to the day of the entry
 const addEntryData = (date, match) => {
-  date.style.backgroundColor = 'rgba(33, 186, 43, 0.5)';
+  date.style.backgroundColor = 'rgba(33, 186, 43, 0.3)';
 
   let exp = document.createElement('em');
   date.appendChild(exp);
