@@ -16,11 +16,11 @@ const in_links = {
 }
 
 router.get('/', async (req, res) => {
-  await res.render('/', {
+  await res.render('index', {
     option_1: "Log In",
+    link_1: "/login",
     option_2: "Sign Up",
-    option_3: "Help",
-    option_4: "About",
+    link_2: "/sign_up"
   });
 })
 

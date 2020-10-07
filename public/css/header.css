@@ -1,0 +1,67 @@
+header {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 2000px;
+  background-color: #32c889;
+  color: white;
+  height: 80px;
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-rows: 100%;
+  grid-template-areas:
+    "branding nav";
+}
+
+
+header h1 {
+  display: inline-block;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+header h2 {
+  display: inline-block;
+  font-family: 'Cabin', sans-serif;
+  font-style: italic;
+  font-size: 1rem;
+  align-self: center;
+}
+
+header nav {
+  grid-area: nav;
+  margin-right: 7.5%;
+  align-self: center;
+  justify-self: end;
+}
+
+
+header a {
+  color: white;
+  text-decoration: none;
+}
+
+#branding {
+  grid-area: branding;
+  align-self: center;
+}
+
+#mobile_brand {
+  display: none;
+}
+
+.nav_img {
+  height: 60px;
+  width: auto;
+  float: right;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: white;
+  font-family: 'Cabin', sans-serif;
+}
+
+header nav ul li a:hover {
+  color: #629881;
+}
