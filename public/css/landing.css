@@ -1,0 +1,65 @@
+body {
+  background-color: #F0FBF7;
+  background-image: url('../images/land_bg.svg');
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+}
+
+#splash {
+  width: 100%;
+  background-color: rgba(137, 225, 188, 0.6);
+  background-image: url('../images/splash_bg_land.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 2.5%;
+}
+
+#splash h1 {
+  padding-top: 2%;
+  margin-top: 0;
+}
+
+#splash h2 {
+  margin: 2% auto;
+}
+
+.button {
+  padding: 1rem;
+  font-size: 1.25rem;
+}
+
+#blurbs {
+  display: grid;
+  width: 80%;
+  margin: 2% auto;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 2rem;
+}
+
+#blurbs h2 {
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 720px){
+  #blurbs {
+    overflow: auto;
+    white-space: pre-wrap;
+    grid-template-columns: repeat(3, 70vw);
+    grid-gap: 2rem;
+  }
+
+  #blurbs p {
+    display: block;
+    text-align: center;
+    font-size: 1.15rem;
+  }
+}
+
+@media only screen and (max-width: 440px){
+  #blurbs {
+    grid-template-columns: repeat(3, 60vw);
+  }
+}

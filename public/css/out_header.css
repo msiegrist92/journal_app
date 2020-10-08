@@ -10,7 +10,7 @@ header nav ul {
 header nav ul li {
   text-decoration: none;
   display: inline-block;
-  padding: 1rem 2rem;
+  padding: .5rem 1rem;
   font-size: 1.5rem;
 }
 
@@ -18,4 +18,15 @@ header nav ul li {
 
 header nav ul li a:hover {
   color: #629881;
+}
+
+@media only screen and (max-width: 440px){
+
+  header nav ul {
+    padding-left: 0;
+  }
+
+  nav ul li a {
+    font-size: 1.25rem;
+  }
 }

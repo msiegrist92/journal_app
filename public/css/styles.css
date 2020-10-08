@@ -1,6 +1,7 @@
 /*complementary red C83270
 caribbean green 32C889
 lighter green tint hover D2F4E6
+darker green tint #248F62
 */
 
 body {
@@ -20,10 +21,14 @@ h1, h2, h3 {
   border-color: #E1848C;
   color: white;
   padding: .8rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .button:hover {
   background-color: #EAA7AD;
+  cursor: pointer;
 }
 
 .field {
@@ -43,27 +48,6 @@ label {
   align-self: center;
 }
 
-
-@media only screen and (max-width: 645px){
-  header h2 {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 521px){
-  header h1 {
-    display: none;
-  }
-
-  #mobile_brand {
-    display: block;
-  }
-
-  #mobile_brand img {
-    height: 70px;
-    width: auto;
-    margin-left: 2.5%;
-  }
-
-
+p {
+  font-family: "Cabin", serif;
 }

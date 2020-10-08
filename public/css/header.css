@@ -6,7 +6,7 @@ header {
   color: white;
   height: 80px;
   display: grid;
-  grid-template-columns: 30% 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 100%;
   grid-template-areas:
     "branding nav";
@@ -64,4 +64,33 @@ header nav ul li a {
 
 header nav ul li a:hover {
   color: #629881;
+}
+
+
+@media only screen and (max-width: 680px){
+
+  header {
+    grid-template-columns: 30% 1fr;
+  }
+  header h2 {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 521px){
+  header h1 {
+    display: none;
+  }
+
+  #mobile_brand {
+    display: block;
+  }
+
+  #mobile_brand img {
+    height: 70px;
+    width: auto;
+    margin-left: 2.5%;
+  }
+
+
 }

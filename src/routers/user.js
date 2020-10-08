@@ -1,6 +1,8 @@
+const pop = require('../utils/populate_entries.js');
 const mongoose = require('mongoose');
 const express = require('express');
 const User = require('../db/schemas/user.js');
+// const Entry = require('')
 const router = new express.Router();
 const bodyParser = require('body-parser');
 const json_parser = bodyParser.json();
@@ -13,8 +15,6 @@ router.post('/user', json_parser, async (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-
-  console.log(user);
   try {
     //password hashing is handled by the schema.pre method
     await user.save()
@@ -47,7 +47,8 @@ router.post('/user/logout', json_parser, auth,  async (req, res) => {
 
 router.get('/user/me', auth, async (req, res) => {
   try {
-    res.send(req.user);
+    const entries = await pop.getAll(req.user._id);
+    res.status(200).send({user: req.user, entries});
   } catch (err) {
     res.status(500).send(err)
   }

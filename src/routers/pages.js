@@ -1,5 +1,6 @@
 const express = require('express');
 const calendar = require('../utils/calendar.js');
+const me = require('../utils/me.js');
 const router = new express.Router();
 const app = express();
 
@@ -15,7 +16,7 @@ const in_links = {
   option_5: "Log Out"
 }
 
-router.get('/', async (req, res) => {
+router.get('/index', async (req, res) => {
   await res.render('index', {
     option_1: "Log In",
     link_1: "/login",
@@ -38,7 +39,27 @@ router.get('/recent', async (req, res) => {
 
 router.get('/calendar', async (req, res) => {
   let cal = calendar.createCal();
-  res.render('calendar', cal);
+  await res.render('calendar', cal);
+})
+
+router.get('/me', async (req, res) => {
+
+  //receive token from request
+  console.log(req)
+  const to_render = {};
+
+  me.createRender().then(async (obj) => {
+    to_render.recent = obj.recent;
+    to_render.first = obj.first;
+    to_render.consistency = obj.consistency;
+    to_render.email = obj.email;
+
+    await res.render('me', to_render)
+  })
+
+  console.log(to_render);
+
+  // await res.render('me', to_render)
 })
 
 router.get('/login', async (req, res) => {

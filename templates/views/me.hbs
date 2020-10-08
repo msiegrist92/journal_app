@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta name='viewport' content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/header.css">
+  <link rel="stylesheet" href="../css/in_header.css">
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&display=swap" rel="stylesheet">
+</head>
+  {{>in_header}}
+<body>
+  <div id="info_cont">
+
+    <h2>Email</h2>
+    <h2 id='email'>{{email}}</h2>
+
+    <button id="pw_change">Change Password</button>
+
+  </div>
+
+  <div id="stats_cont">
+
+    <h2>First Entry</h2>
+    <h2 id="first_e">{{first}}</h2>
+
+    <h2>Most Recent</h2>
+    <h2 id="recent_e">{{recent}}</h2>
+
+    <h2>Consistency</h2>
+    <h2 id="consistency">{{consistency}}</h2>
+
+  </div>
+
+
+
+  <script src="../js/logout.js"></script>
+  <script src="../js/nav_menu.js"></script>
+</body>
+</html>
