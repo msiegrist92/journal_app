@@ -29,12 +29,14 @@ const createCal = () => {
   to_render.option_1 = "Create"
   to_render.option_2 = "Calendar"
   to_render.option_3 = "Recents"
-  to_render.option_4 = "Search"
-  to_render.option_5 = "Log Out"
+  to_render.option_4 = "Search",
+  to_render.option_5 = 'Account'
+  to_render.option_6 = "Log Out"
   to_render.link_1 = '/create'
   to_render.link_2 = '/calendar'
   to_render.link_3 = '/recent'
   to_render.link_4 = '/search'
+  to_render.link_5 = '/me'
 
   return to_render;
 }

@@ -49,18 +49,30 @@ const calcConsistency = (first_ms, recent_ms, entries) => {
 
 const getUserStats = (dates, entries) => {
 
+  //error handling for dates, entries being empty
+
+  if(entries.length === 0 || dates.length === 0){
+    return stats = {
+      recent: 'No entries made',
+      first: "No entries made",
+      consistency: 0
+    }
+  }
+
+
   const recent_e = dates[dates.length - 1];
   const first_e = dates[0];
 
   const first_ms = first_e.getTime();
-  const recent_ms = recent_e.getTime();
 
-  const difference = recent_ms - first_ms;
+  const today_ms = new Date().setHours(0,0,0,0);
+
+  const difference = today_ms - first_ms;
   const days_difference = difference / 86400000 + 1;
 
   const num_entries = entries.length;
 
-  const consistency = calcConsistency(first_ms, recent_ms, entries)
+  const consistency = calcConsistency(first_ms, today_ms, entries)
 
   return stats = {
     recent : date_regex.formatDate(recent_e.toString()),
@@ -70,12 +82,12 @@ const getUserStats = (dates, entries) => {
 
 }
 
-const createRender = () => {
+const createRender = (token) => {
   return rp({
     uri: 'http://127.0.0.1:3000/user/me',
     headers: {
       "Content-Type": "application/json",
-      "Authorization" : 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1Zjc4ZjM0MmQ2NDQ2YjFlYThkMGMwN2YiLCJpYXQiOjE2MDIxMTIzOTB9.1Mod3gN5xn_6am1mFQEyKiu69mlV2IQpDK5Jl9KCRGY'
+      "Authorization" : token
     },
     json: true
   }).then((response) => {
@@ -83,7 +95,7 @@ const createRender = () => {
     const stats = getUserStats(getSortedDates(response.entries),            response.entries);
     to_render.recent = stats.recent;
     to_render.first = stats.first;
-    to_render.consistency = stats.consistency;
+    to_render.consistency = stats.consistency + '%';
     to_render.email = response.user.email;
     return to_render;
   })

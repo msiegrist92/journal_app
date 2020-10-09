@@ -15,6 +15,6 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     }
   }).then((response) => {
     deleteCookie('token');
-    window.location = "/"
+    window.location = "/index"
   })
 })

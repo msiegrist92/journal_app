@@ -6,36 +6,59 @@
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/header.css">
   <link rel="stylesheet" href="../css/in_header.css">
+  <link rel="stylesheet" href="../css/me.css">
   <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Cabin:ital@0;1&display=swap" rel="stylesheet">
 </head>
-  {{>in_header}}
+
 <body>
-  <div id="info_cont">
 
-    <h2>Email</h2>
-    <h2 id='email'>{{email}}</h2>
+  {{>in_header}}
 
-    <button id="pw_change">Change Password</button>
+  <div id="page_cont">
+
+    <div id="info_cont">
+
+      <h2>Email</h2>
+      <h3 class='data' id='email'>{{email}}</h3>
+
+      <button class='button' id="pw_change">Change Password</button>
+
+    </div>
+
+    <div id="stats_cont">
+
+      <h2>First Entry</h2>
+      <h3 class='data' id="first_e">{{first}}</h3>
+
+      <h2>Most Recent</h2>
+      <h3 class='data' id="recent_e">{{recent}}</h3>
+
+      <h2>Consistency</h2>
+      <h3 class='data' id="consistency">{{consistency}}</h3>
+
+    </div>
 
   </div>
 
-  <div id="stats_cont">
+  <form id="pw_form">
+    <label for=old_pw>Password</label>
+    <input password class='field' type='password' name="old_pw">
 
-    <h2>First Entry</h2>
-    <h2 id="first_e">{{first}}</h2>
+    <label for=old_pw>New Password</label>
+    <input password class='field' type='password' name="new_pw">
 
-    <h2>Most Recent</h2>
-    <h2 id="recent_e">{{recent}}</h2>
+    <label for=old_pw>Retype New Password</label>
+    <input password class='field' type='password' name="new_match">
 
-    <h2>Consistency</h2>
-    <h2 id="consistency">{{consistency}}</h2>
+    <h3 id="response"></h3>
 
-  </div>
-
+    <input password class='button' type='submit' value="Update Password">
+  </form>
 
 
   <script src="../js/logout.js"></script>
   <script src="../js/nav_menu.js"></script>
+  <script src="../js/change_pass.js"></script>
 </body>
 </html>

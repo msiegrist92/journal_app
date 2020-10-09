@@ -7,6 +7,7 @@ const router = new express.Router();
 const bodyParser = require('body-parser');
 const json_parser = bodyParser.json();
 const auth = require('../utils/auth.js');
+const bcrypt = require('bcrypt');
 
 
 router.post('/user', json_parser, async (req, res) => {
@@ -54,27 +55,26 @@ router.get('/user/me', auth, async (req, res) => {
   }
 })
 
-router.patch('/user/me', auth, async (req, res) => {
+
+//this route is only for updating user password
+router.patch('/user/me', json_parser, auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowed = ['email', 'password'];
+  const allowed = ['old_pw', 'new_pw'];
 
-  const isValidOperation = updates.every((key) => {
-    return allowed.includes(key)
-  })
-
-  if (!isValidOperation) {
-    return res.status(400).send('invalid update property');
+  //hash body.old_pw and compare to req.user.pass in db
+  //if not match res.send(400).('invalid password')
+  if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
+    res.status(401);
   }
-
+  console.log(req.body);
   try {
-    updates.forEach(async (update) => {
-      req.user[update] = req.body[update]
-    })
+    req.user.password = req.body.new_pw;
     await req.user.save();
 
-    res.send(req.user);
+    console.log('ok');
+    res.status(200).send('user deleted');
   } catch (err) {
-    res.status(400).send(err)
+    res.status(500).send(err)
   }
 })
 
