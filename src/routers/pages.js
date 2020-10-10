@@ -18,7 +18,7 @@ const in_links = {
   option_6: 'Logout'
 }
 
-router.get('/index', async (req, res) => {
+router.get('/', async (req, res) => {
   await res.render('index', {
     option_1: "Log In",
     link_1: "/login",
@@ -46,10 +46,10 @@ router.get('/calendar', async (req, res) => {
 
 router.get('/me', async (req, res) => {
 
-  //receive token from request
+
   const to_render = {};
 
-  me.createRender(req.cookies.token).then(async (obj) => {
+  me.createRender(req.cookies.token, req.hostname).then(async (obj) => {
     to_render.recent = obj.recent;
     to_render.first = obj.first;
     to_render.consistency = obj.consistency;

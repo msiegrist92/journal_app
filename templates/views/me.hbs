@@ -42,21 +42,24 @@
   </div>
 
   <form id="pw_form">
-    <label for=old_pw>Password</label>
+
+    <img id="pw_back" src="../images/edit_arrow_4.png">
+
+    <h2>Password</h2>
     <input password class='field' type='password' name="old_pw">
 
-    <label for=old_pw>New Password</label>
+    <h2>New Password</h2>
     <input password class='field' type='password' name="new_pw">
 
-    <label for=old_pw>Retype New Password</label>
+    <h2>Retype New Password<h2>
     <input password class='field' type='password' name="new_match">
 
     <h3 id="response"></h3>
 
-    <input password class='button' type='submit' value="Update Password">
+    <input class='button' type='submit' value="Update Password">
   </form>
 
-
+  <script src="../js/pw_slide.js"></script>
   <script src="../js/logout.js"></script>
   <script src="../js/nav_menu.js"></script>
   <script src="../js/change_pass.js"></script>

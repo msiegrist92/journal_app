@@ -37,7 +37,7 @@ const user_schema = Schema({
   tokens: [{
     token: {
       type: String,
-      required: true
+      required: true,
     }
   }]
 })
@@ -66,7 +66,7 @@ user_schema.pre('save', async function(next) {
 user_schema.methods.generateAuthToken = async function() {
   const user = this;
   //token holds user's id
-  const token = jwt.sign({_id: user._id.toString()}, process.env.TOKEN_SECRET);
+  const token = jwt.sign({_id: user._id.toString()}, process.env.TOKEN_SECRET)
   //token is added to tokens array of user's document
   user.tokens = user.tokens.concat({token});
   await user.save();

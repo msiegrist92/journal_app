@@ -82,9 +82,14 @@ const getUserStats = (dates, entries) => {
 
 }
 
-const createRender = (token) => {
+const createRender = (token, hostname) => {
+
+  const port = process.env.PORT || 3000;
+  const uri = 'http://' + hostname + ':' + port + '/user/me';
+  console.log(uri);
+
   return rp({
-    uri: 'http://127.0.0.1:3000/user/me',
+    uri,
     headers: {
       "Content-Type": "application/json",
       "Authorization" : token

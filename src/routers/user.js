@@ -11,6 +11,10 @@ const bcrypt = require('bcrypt');
 
 
 router.post('/user', json_parser, async (req, res) => {
+  const find = await User.findOne({email: req.body.email});
+  if(find != null){
+    return res.status(400).send('email already in use');
+  }
   const user = new User({
     _id: new mongoose.Types.ObjectId(),
     email: req.body.email,
@@ -22,18 +26,23 @@ router.post('/user', json_parser, async (req, res) => {
     const token = await user.generateAuthToken();
     res.status(201).send({user, token});
   } catch (err) {
-    res.status(400).send(err);
+    res.status(500).send(err);
   }
 })
 
 router.post('/user/login', json_parser, async (req, res) => {
   try {
     const user = await User.findUser(req.body.email, req.body.password);
+    if(user === null){
+      console.log('null af');
+    }
+    console.log(user);
     const token = await user.generateAuthToken();
     res.status(201).send({user, token});
   } catch (err) {
     res.status(500).send(err);
   }
+
 })
 
 router.post('/user/logout', json_parser, auth,  async (req, res) => {
@@ -66,7 +75,7 @@ router.patch('/user/me', json_parser, auth, async (req, res) => {
   if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
     res.status(401);
   }
-  console.log(req.body);
+
   try {
     req.user.password = req.body.new_pw;
     await req.user.save();

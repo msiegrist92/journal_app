@@ -15,9 +15,19 @@ form.addEventListener('submit', async (e) => {
       "Content-Type": "application/json"
     },
     body : data
-  }).then((response) => { return response.json()
+  }).then((response) => {
+    if (response.status === 500){
+      return alert('Incorrect email or password');
+    } else {
+    return response.json()
+  }
   }).then((json) => {
-    document.cookie = "token=" + json.token;
+
+    const now = new Date().getTime();
+    let to_expire = now + 1800000;
+    to_expire = new Date(to_expire);
+    to_expire = to_expire.toGMTString();
+    document.cookie = "token=" + json.token + ';expires=' + to_expire;
     window.location = "/create"
   })
 })
