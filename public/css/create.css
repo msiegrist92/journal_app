@@ -61,6 +61,18 @@ input {
   font-size: 1.25rem;
 }
 
+#create_ok {
+  display: none;
+  position: absolute;
+  width: 200px;
+  padding: 2rem;
+  background-color: #E5F9F1;
+  border: 3px solid #269D6B;
+  border-radius: 8px;
+  left: calc(50% - (100px + 1.5rem));
+  top: 50%;
+}
+
 @media only screen and (max-width: 645px){
 
   form {

@@ -1,14 +1,15 @@
 const pop = require('../utils/populate_entries.js');
+const popTokens = require('../utils/populate_tokens.js');
 const mongoose = require('mongoose');
 const express = require('express');
 const User = require('../db/schemas/user.js');
+const Tokens = require('../db/schemas/tokens.js');
 // const Entry = require('')
 const router = new express.Router();
 const bodyParser = require('body-parser');
 const json_parser = bodyParser.json();
 const auth = require('../utils/auth.js');
 const bcrypt = require('bcrypt');
-
 
 router.post('/user', json_parser, async (req, res) => {
   const find = await User.findOne({email: req.body.email});
@@ -36,7 +37,6 @@ router.post('/user/login', json_parser, async (req, res) => {
     if(user === null){
       console.log('null af');
     }
-    console.log(user);
     const token = await user.generateAuthToken();
     res.status(201).send({user, token});
   } catch (err) {
@@ -47,7 +47,8 @@ router.post('/user/login', json_parser, async (req, res) => {
 
 router.post('/user/logout', json_parser, auth,  async (req, res) => {
   try {
-    req.user.tokens = [];
+    //cascade delete all tokens where owner === reg.user._id
+    await Tokens.deleteMany({owner: req.user._id});
     await req.user.save();
     res.send();
   } catch (err) {
@@ -80,7 +81,6 @@ router.patch('/user/me', json_parser, auth, async (req, res) => {
     req.user.password = req.body.new_pw;
     await req.user.save();
 
-    console.log('ok');
     res.status(200).send('user deleted');
   } catch (err) {
     res.status(500).send(err)

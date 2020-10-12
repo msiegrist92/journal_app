@@ -51,7 +51,7 @@ edit_cont.addEventListener('submit', async (e) => {
       "Authorization": token
     },
     body: data
-}).then((response) => console.log(response));
+}).then((response));
 })
 
 back_arrow.addEventListener('click', (e) => {

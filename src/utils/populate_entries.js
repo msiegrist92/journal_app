@@ -7,7 +7,7 @@ const allowed = ['sleep', 'diet', 'expenses', 'income', 'exercise',
 const getAll = async (user_id) => {
   const user = await User.findById(user_id);
   const entries = await user.populate('entries').execPopulate();
-  const all = user.entries;;
+  const all = user.entries;
   return all;
 }
 

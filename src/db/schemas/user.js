@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const Tokens = require('./tokens.js');
 const Schema = mongoose.Schema;
 
 
@@ -32,14 +33,7 @@ const user_schema = Schema({
         throw new Error("password cannot be 'password'")
       }
     }
-  },
-  //user schema holds an array of auth tokens
-  tokens: [{
-    token: {
-      type: String,
-      required: true,
-    }
-  }]
+  }
 })
 
 //toJSON runs whenever object is parsed as toJSON
@@ -66,10 +60,14 @@ user_schema.pre('save', async function(next) {
 user_schema.methods.generateAuthToken = async function() {
   const user = this;
   //token holds user's id
-  const token = jwt.sign({_id: user._id.toString()}, process.env.TOKEN_SECRET)
-  //token is added to tokens array of user's document
-  user.tokens = user.tokens.concat({token});
-  await user.save();
+  const token = new Tokens({
+    _id: new mongoose.Types.ObjectId(),
+    token: jwt.sign({_id: user._id.toString()}, process.env.TOKEN_SECRET),
+    owner: user._id,
+    createdAt: undefined
+  })
+  //token is added to token db collection
+  await token.save();
   return token;
 }
 
@@ -93,6 +91,12 @@ user_schema.virtual('entries', {
   ref: 'Entry',
   localField: '_id',
   foreignField: 'owner',
+})
+
+user_schema.virtual('tokens', {
+  ref: "Tokens",
+  localField: '_id',
+  foreignField: 'owner'
 })
 
 

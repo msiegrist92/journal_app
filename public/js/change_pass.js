@@ -37,7 +37,6 @@ form.addEventListener('submit', async (e) => {
     body: passwords
 
   }).then((response) => {
-    console.log(response);
     if(response.status === 401){
       response_el.textContent = 'Invalid password'
     }

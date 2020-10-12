@@ -10,6 +10,10 @@ const ids = ["sleep_lab", "sleep",
 
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
+const ok_msg = document.getElementById('create_ok');
+
+const hide = document.getElementById('hide_msg');
+
 gridAreaStyle(ids);
 document.getElementById("date").value = formatTommddyy(formatDate(new Date().toString()));
 
@@ -40,6 +44,12 @@ form.addEventListener("submit", async (event) => {
         "Authorization": token
       },
       body: data
-    }).then((data) => document.getElementById("response").textContent = data.statusText);
+    }).then((data) => {
+      ok_msg.style.display = 'block';
+    })
   }
+})
+
+hide_msg.addEventListener('click', (e) => {
+  ok_msg.style.display = 'none';
 })
