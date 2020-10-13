@@ -53,6 +53,10 @@ body {
     gap: 2rem;
   }
 
+  #blurbs h2 {
+    margin-bottom: 2%;
+  }
+
   #blurbs p {
     display: block;
     text-align: center;
