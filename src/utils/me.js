@@ -85,7 +85,7 @@ const getUserStats = (dates, entries) => {
 const createRender = (token, hostname) => {
 
   const port = process.env.PORT || 2800;
-  const uri = 'http://' + hostname + ':' + port + '/user/me';
+  const uri = 'http://' + hostname + '/user/me';
 
   return rp({
     uri,
