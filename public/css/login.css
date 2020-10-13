@@ -26,6 +26,29 @@ form {
   font-size: 1.5rem;
 }
 
+#create_ok {
+  display: none;
+  position: absolute;
+  width: 200px;
+  padding: 2rem;
+  background-color: #E89EA4;
+  border: 3px solid #D24652;
+  border-radius: 8px;
+  left: calc(50% - (100px + 1.5rem));
+  top: 40%;
+}
+
+#create_ok h2 {
+  color: white;
+}
+
+#hide_msg {
+  background-color: #F9F2E6;
+  border-color: #F9F2E6;
+  color: black;
+}
+
+
 h1 {
   grid-column: 1 / 3;
 }

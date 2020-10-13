@@ -11,6 +11,9 @@ const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'wo
 const getEntries = async (date) => {
 
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  if(document.cookie.match(REGEXP) === null){
+    return alert("Token expired please log in");
+  }
   const token = document.cookie.match(REGEXP)[0]
 
   let uri_date = encodeURI(date)
@@ -30,7 +33,7 @@ const getEntries = async (date) => {
     }
 
   }).catch((err) => {
-    document.getElementById('date').textContent = 'no entry found for ' + date;
+    document.getElementById('date').textContent = 'No entry found for ' + date;
 })
 }
 

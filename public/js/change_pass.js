@@ -21,6 +21,9 @@ form.addEventListener('submit', async (e) => {
 
 
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  if(document.cookie.match(REGEXP) === null){
+    return alert("Token expired please log in");
+  }
   const token = document.cookie.match(REGEXP)[0]
 
   const passwords = JSON.stringify({
@@ -49,6 +52,4 @@ form.addEventListener('submit', async (e) => {
   })
 
 
-
-  //if above {changepass and return 201}
 })

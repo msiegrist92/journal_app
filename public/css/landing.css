@@ -28,6 +28,8 @@ body {
 .button {
   padding: 1rem;
   font-size: 1.25rem;
+  margin-bottom: 5%;
+  margin-top: 5%;
 }
 
 #blurbs {
@@ -59,6 +61,11 @@ body {
 }
 
 @media only screen and (max-width: 440px){
+
+  #blurbs p {
+    margin-top: 0;
+  }
+
   #blurbs {
     grid-template-columns: repeat(3, 60vw);
   }

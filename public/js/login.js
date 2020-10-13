@@ -1,5 +1,14 @@
 const form = document.querySelector('form');
 
+const ok_msg = document.getElementById('create_ok');
+const alert_msg = document.getElementById('alert_msg');
+const hide = document.getElementById('hide_msg');
+
+hide_msg.addEventListener('click', (e) => {
+  ok_msg.style.display = 'none';
+})
+
+
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
@@ -17,7 +26,9 @@ form.addEventListener('submit', async (e) => {
     body : data
   }).then((response) => {
     if (response.status === 500){
-      return alert('Incorrect email or password');
+      ok_msg.style.display = 'block';
+      window.scrollTo(0, 0);
+      return alert_msg.textContent = 'Incorrect email or password';
     } else {
     return response.json()
   }

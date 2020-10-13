@@ -19,6 +19,7 @@ h1, h2, h3 {
   font-size: 1rem;
   background-color: #E1848C;
   border-color: #E1848C;
+  border-radius: 7px;
   color: white;
   padding: .8rem;
   margin-left: auto;
@@ -38,7 +39,8 @@ h1, h2, h3 {
   font-family: "Cabin", serif;
   margin: 0 auto;
   display: block;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  width: 70%;
 }
 
 label {
@@ -50,4 +52,13 @@ label {
 
 p {
   font-family: "Cabin", serif;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+#back_arrow:hover{
+  cursor: pointer;
 }

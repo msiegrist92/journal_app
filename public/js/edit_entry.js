@@ -5,6 +5,10 @@ const edit_button = document.getElementById("edit");
 const edit_cont = document.getElementById('edit_cont');
 const back_arrow = document.getElementById('back_arrow');
 const body = document.querySelector('body');
+const edit_msg = document.getElementById('edit_ok');
+const hide = document.getElementById('hide_msg');
+const sleep = document.getElementById('sleep');
+const alert_msg = document.getElementById('alert_msg');
 
 const fields = ['exercise', 'work', 'notes', 'sleep', 'diet', 'expenses', 'income'];
 
@@ -13,6 +17,14 @@ const mobile = window.matchMedia("(max-width: 500px)");
 
 edit.addEventListener("click", (e) =>  {
   e.preventDefault();
+
+
+  if(sleep.textContent.length < 1){
+    edit_msg.style.display = 'block';
+    window.scrollTo(0, 0);
+    return alert_msg.textContent = 'No entry chosen'
+  }
+
 
   if(mobile.matches){
     edit_cont.style.left = "2.5%";
@@ -42,6 +54,9 @@ edit_cont.addEventListener('submit', async (e) => {
   const URI_date = encodeURI(document.getElementById('date').textContent);
 
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  if(document.cookie.match(REGEXP) === null){
+    return alert("Token expired please log in");
+  }
   const token = document.cookie.match(REGEXP)[0]
 
   await fetch("/entries/" + URI_date, {
@@ -51,7 +66,14 @@ edit_cont.addEventListener('submit', async (e) => {
       "Authorization": token
     },
     body: data
-}).then((response));
+}).then((response) => {
+  edit_msg.style.display = 'block';
+  alert_msg.textContent = 'Edit successful'
+  window.scrollTo(0, 0);
+  edit_cont.style.right = '-3000px';
+  edit_cont.style.left = '1000px';
+  body.style.overflow = 'hidden';
+})
 })
 
 back_arrow.addEventListener('click', (e) => {
@@ -59,4 +81,8 @@ back_arrow.addEventListener('click', (e) => {
   edit_cont.style.right = '-3000px';
   edit_cont.style.left = '1000px';
   body.style.overflow = 'hidden';
+})
+
+hide_msg.addEventListener('click', (e) => {
+  edit_msg.style.display = 'none';
 })

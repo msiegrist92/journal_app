@@ -44,7 +44,7 @@
         <h2 id='inc_lab'>Income</h2>
 
         <h3 id='expenses'></h3>
-        <h2 id='income'></h2>
+        <h3 id='income'></h3>
       </div>
 
     </div>
@@ -96,11 +96,17 @@
       <h2>Expenses</h2>
       <h2>Income</h2>
 
-      <input required class='field' type='text' name="expenses">
-      <input required class='field' type='text' name="income">
+      <input required class='field' type='number' name="expenses">
+      <input required class='field' type='number' name="income">
     </div>
     <input class='button' id='edit_submit' type='submit'>
   </form>
+
+  <div id="edit_ok">
+    <h2 id='alert_msg'></h2>
+    <button id="hide_msg" class='button'>Ok</button>
+  </div>
+
   <script src="../js/logout.js"></script>
   <script src="../js/nav_menu.js"></script>
   <script src="../js/create_grid.js" var gridAreaStyle; ></script>

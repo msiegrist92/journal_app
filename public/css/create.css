@@ -11,7 +11,7 @@ form {
   max-width: 960px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(8, auto);
+  grid-template-rows: repeat(7, auto);
   grid-gap: 1.5rem;
   grid-template-areas:
   ". date_lab date ."
@@ -20,8 +20,7 @@ form {
     "exer_lab exer_lab exercise exercise"
     "work_lab work_lab work work"
     "notes_lab notes_lab notes notes"
-    ". submit submit ."
-    ". response response .";
+    ". submit submit .";
 }
 
 .field {
@@ -55,22 +54,26 @@ input {
   margin: 0 auto;
 }
 
-#response {
-  font-family: "Cabin", sans-serif;
-  margin: 0 auto;
-  font-size: 1.25rem;
-}
-
 #create_ok {
   display: none;
   position: absolute;
   width: 200px;
   padding: 2rem;
-  background-color: #E5F9F1;
-  border: 3px solid #269D6B;
+  background-color: #E89EA4;
+  border: 3px solid #D24652;
   border-radius: 8px;
   left: calc(50% - (100px + 1.5rem));
-  top: 50%;
+  top: 40%;
+}
+
+#create_ok h2 {
+  color: white;
+}
+
+#hide_msg {
+  background-color: #F9F2E6;
+  border-color: #F9F2E6;
+  color: black;
 }
 
 @media only screen and (max-width: 645px){
@@ -92,7 +95,7 @@ input {
 
   form {
     width: 90%;
-    grid-template-rows: repeat(13, auto);
+    grid-template-rows: repeat(12, auto);
     grid-template-areas:
     "date_lab date_lab date date"
     "sleep_lab sleep_lab sleep sleep"
@@ -106,7 +109,6 @@ input {
     ". notes_lab notes_lab ."
     "notes notes notes notes"
     "submit submit submit submit"
-    ". response response ."
   }
 
   label {

@@ -1,6 +1,6 @@
 const pw_change = document.getElementById('pw_change');
 const pw_form = document.getElementById('pw_form');
-const pw_back = document.getElementById('pw_back');
+const pw_back = document.getElementById('back_arrow');
 
 pw_change.addEventListener('click', (e) => {
   e.preventDefault();

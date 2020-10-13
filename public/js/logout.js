@@ -6,6 +6,9 @@ const deleteCookie = name => {
 document.getElementById('logout').addEventListener('click', async (e) => {
   e.preventDefault();
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  if(document.cookie.match(REGEXP) === null){
+    return window.location = '/';
+  }
   const token = document.cookie.match(REGEXP)[0]
   await fetch('user/logout', {
     method: 'POST',

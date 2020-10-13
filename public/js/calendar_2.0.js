@@ -19,6 +19,9 @@ const highlightToday = (today) => {
 
 const getEntries = (month_name) => {
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+  if(document.cookie.match(REGEXP) === null){
+    return alert("Token expired please log in");
+  }
   const token = document.cookie.match(REGEXP)[0]
   return fetch('entries/months/' + month_name, {
     method: 'GET',
@@ -43,8 +46,11 @@ const isInYear = (entry, year) => {
 
 //date is the element corresponding to the day of the entry
 const addEntryData = (date, match) => {
-  date.style.backgroundColor = 'rgba(33, 186, 43, 0.3)';
-
+  if(match.sleep < 7 || match.diet < 7){
+    date.style.backgroundColor = 'rgba(218, 223, 78, 0.32)';
+  } else {
+    date.style.backgroundColor = 'rgba(33, 186, 43, 0.3)';
+  }
   let exp = document.createElement('em');
   date.appendChild(exp);
   exp.textContent += '\n' + 'Expenses : ' + match.expenses;
@@ -66,7 +72,7 @@ const totalFinances = (matches, value) => {
 
 const displayMonthFinances = (exp, inc) => {
   let el = document.getElementById("inc_exp");
-  el.textContent = `Total Expenses : ${exp} - Total Income : ${inc}`;
+  el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
 }
 
 

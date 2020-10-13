@@ -1,10 +1,22 @@
 const register_form = document.querySelector('form');
 
+const ok_msg = document.getElementById('create_ok');
+const alert_msg = document.getElementById('alert_msg');
+const hide_msg = document.getElementById('hide_msg');
+
+hide_msg.addEventListener('click', (e) => {
+  ok_msg.style.display = 'none';
+})
+
+
 register_form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   if(document.getElementsByName('password')[0].value.length < 6){
-    return alert('Password must be at least six characters')
+    ok_msg.style.display = 'block';
+    window.scrollTo(0, 0);
+    return alert_msg.textContent = 'Password must be six characters';
+
   }
 
   const data = JSON.stringify({
@@ -19,7 +31,9 @@ register_form.addEventListener('submit', async (e) => {
     body: data
   }).then((response) => {
     if(response.status === 400){
-      return alert('email already in use');
+      ok_msg.style.display = 'block';
+      window.scrollTo(0, 0);
+      return alert_msg.textContent = 'Email already in use';
     }
     return response.json()
   }).then((json) => {

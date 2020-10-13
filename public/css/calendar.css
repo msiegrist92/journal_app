@@ -49,6 +49,8 @@ em {
 #inc_exp {
   width: 90%;
   margin: 2% auto;
+  white-space: pre;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px){
