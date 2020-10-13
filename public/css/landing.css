@@ -38,7 +38,6 @@ body {
   margin: 2% auto;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
-  gap: 2rem;
 }
 
 #blurbs h2 {
@@ -50,11 +49,10 @@ body {
     overflow: auto;
     white-space: pre-wrap;
     grid-template-columns: repeat(3, 70vw);
-    gap: 2rem;
   }
 
   #blurbs h2 {
-    margin-bottom: 2%;
+    margin-bottom: 0;
   }
 
   #blurbs p {
