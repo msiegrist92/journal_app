@@ -45,7 +45,7 @@ body {
   margin-bottom: 0;
 }
 
-@media only screen and (max-width: 720px){
+@media (max-width: 720px){
   #blurbs {
     overflow: auto;
     white-space: pre-wrap;
@@ -64,7 +64,7 @@ body {
   }
 }
 
-@media only screen and (max-width: 440px){
+@media (max-width: 440px){
 
   #blurbs p {
     margin-top: 0;
