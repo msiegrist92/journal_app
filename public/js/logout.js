@@ -5,7 +5,7 @@ const deleteCookie = name => {
 
 document.getElementById('logout').addEventListener('click', async (e) => {
   e.preventDefault();
-  document.getElementById('logout').textContent = document.cookie;
+  alert(document.cookie);
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
   if(document.cookie.match(REGEXP) === null){
     return window.location = '/';
