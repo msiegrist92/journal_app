@@ -10,6 +10,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     return window.location = '/';
   }
   const token = document.cookie.match(REGEXP)[0]
+  alert(token);
   await fetch('/user/logout', {
     credentials: "include",
     mode: "cors",
