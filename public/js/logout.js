@@ -3,7 +3,7 @@ const deleteCookie = name => {
 }
 
 const logout = document.getElementById('logout');
-
+logout.textContent = 'geronimo';
 
 logout.addEventListener('click', async (e) => {
   alert('what in the fuck');
