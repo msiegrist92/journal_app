@@ -5,6 +5,8 @@ const alert_msg = document.getElementById('alert_msg');
 const hide_msg = document.getElementById('hide_msg');
 const message = document.getElementById('message');
 
+message.textContent = window.fetch;
+
 hide_msg.addEventListener('click', (e) => {
   ok_msg.style.display = 'none';
 })
