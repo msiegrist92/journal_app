@@ -21,7 +21,7 @@ form {
 
 .button {
   width: 40%;
-  margin: 2% auto;
+  margin: 2% auto 8% auto;
   grid-column: 1 / 3;
   font-size: 1.5rem;
 }

@@ -144,6 +144,10 @@ input {
   color: black;
 }
 
+select {
+  background-color: white;
+}
+
 @media (max-width: 645px){
 
   form {
@@ -162,9 +166,11 @@ input {
 @media (max-width: 520px){
 
   form {
-    width: 100%;
-    grid-template-rows: repeat(13, auto);
+    width: 90%;
+    margin: 0 auto;
+    grid-template-rows: repeat(12, auto);
     grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
     grid-template-areas:
     "date_lab date_lab date date"
     "sleep_lab sleep_lab sleep sleep"
@@ -181,19 +187,23 @@ input {
   }
 
   label {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
   .field {
-    width: 100%;
+    width: 90%;
   }
 
   .small_input {
-    margin-right: auto;
-    width: 80%;
+    margin: 0 auto;
+    width: 50%;
   }
 
   #submit {
     margin: 5% auto;
+  }
+
+  #date {
+    width: 80%;
   }
 }

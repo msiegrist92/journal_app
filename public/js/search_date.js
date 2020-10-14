@@ -1,6 +1,3 @@
-const grid_areas = ['date_inp', 'submit', 'date', 'entry_cont', 'form'];
-gridAreaStyle(grid_areas);
-
 const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'work',
   'notes'];
 

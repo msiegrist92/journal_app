@@ -2,6 +2,29 @@ body, html {
   overflow-x: hidden;
 }
 
+const grid_areas = ['date_inp', 'submit', 'date', 'entry_cont', 'form'];
+
+#date_inp {
+  grid-area: date_inp;
+}
+
+#submit {
+  grid-area: submit;
+}
+
+#date {
+  grid-area: date;
+}
+
+#entry_cont {
+  grid-area: entry_cont;
+}
+
+#form {
+  grid-area: form;
+}
+
+
 #grid_cont {
   display: grid;
   margin: 0 auto;

@@ -14,6 +14,10 @@
   grid-template-rows: repeat(5, 120px);
 }
 
+#days_cont div {
+  display: block;
+}
+
 #month, #inc_exp {
   text-align: center;
 }

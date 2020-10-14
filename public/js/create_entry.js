@@ -1,13 +1,3 @@
-const ids = ["sleep_lab", "sleep",
-  "date_lab", "date",
-  "diet_lab", "diet",
-  "exp_lab", "expenses",
-  "inc_lab", "income",
-  "exer_lab", "exercise",
-  "work_lab", "work",
-  "notes_lab", "notes",
-  "submit"];
-
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
 const ok_msg = document.getElementById('create_ok');
@@ -15,7 +5,7 @@ const alert_msg = document.getElementById('alert_msg');
 
 const hide = document.getElementById('hide_msg');
 
-gridAreaStyle(ids);
+
 document.getElementById("date").value = formatTommddyy(formatDate(new Date().toString()));
 
 const form = document.querySelector('form');
