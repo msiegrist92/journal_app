@@ -1,5 +1,4 @@
 const btns = ["work_btn", "exer_btn", "gen_btn", "num_lab", 'num', 'go'];
-gridAreaStyle(btns);
 
 const table_elements = ["sleep", "diet", "expenses", "income"];
 

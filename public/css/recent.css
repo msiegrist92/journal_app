@@ -1,3 +1,29 @@
+
+
+#work_btn {
+  grid-area: work_btn;
+}
+
+#exer_btn {
+  grid-area: exer_btn;
+}
+
+#gen_btn {
+  grid-area: gen_btn;
+}
+
+#num_lab {
+  grid-area: num_lab;
+}
+
+#num {
+  grid-area: num;
+}
+
+#go {
+  grid-area: go;
+}
+
 #btn_cont {
   margin: 2% auto;
   display: grid;
