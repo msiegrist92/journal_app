@@ -23,7 +23,9 @@ const getEntries = (month_name) => {
     return alert("Token expired please log in");
   }
   const token = document.cookie.match(REGEXP)[0]
-  return fetch('http://grind-check.herokuapp.com/entries/months/' + month_name, {
+  return fetch('https://grind-check.herokuapp.com/entries/months/' + month_name, {
+    credentials: "include",
+    mode: "cors",
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
