@@ -18,7 +18,7 @@ form.addEventListener('submit', async (e) => {
   })
 
 
-  await fetch ('https://grind-check.herokuapp.com/user/login', {
+  await fetch ('http://grind-check.herokuapp.com/user/login', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"
@@ -39,6 +39,6 @@ form.addEventListener('submit', async (e) => {
     to_expire = new Date(to_expire);
     to_expire = to_expire.toGMTString();
     document.cookie = "token=" + json.token.token + ';expires=' + to_expire;
-    window.location = "https://grind-check.herokuapp.com/create"
+    window.location = "http://grind-check.herokuapp.com/create"
   })
 })

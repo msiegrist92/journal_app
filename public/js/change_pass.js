@@ -31,7 +31,7 @@ form.addEventListener('submit', async (e) => {
     new_pw
   })
 
-  const response = await fetch('https://grind-check.herokuapp.com/user/me', {
+  const response = await fetch('http://grind-check.herokuapp.com/user/me', {
     method: 'PATCH',
     headers : {
       'Content-Type': 'application/json',

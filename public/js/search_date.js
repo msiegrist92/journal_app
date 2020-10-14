@@ -14,7 +14,7 @@ const getEntries = async (date) => {
   const token = document.cookie.match(REGEXP)[0]
 
   let uri_date = encodeURI(date)
-  await fetch('https://grind-check.herokuapp.com/entries/' + uri_date, {
+  await fetch('http://grind-check.herokuapp.com/entries/' + uri_date, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
