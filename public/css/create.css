@@ -95,7 +95,7 @@ input {
 
   form {
     width: 100%;
-    grid-template-rows: repeat(12, auto);
+    grid-template-rows: repeat(13, auto);
     grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
     "date_lab date_lab date date"
@@ -113,7 +113,7 @@ input {
   }
 
   label {
-    font-size: .75rem;
+    font-size: 1rem;
   }
 
   .field {
