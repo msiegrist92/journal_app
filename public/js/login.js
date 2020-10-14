@@ -3,16 +3,14 @@ const form = document.querySelector('form');
 const ok_msg = document.getElementById('create_ok');
 const alert_msg = document.getElementById('alert_msg');
 const hide_msg = document.getElementById('hide_msg');
-const message = document.getElementById('message');
 
-message.textContent = window.fetch;
 
 hide_msg.addEventListener('click', (e) => {
   ok_msg.style.display = 'none';
 })
 
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const data = JSON.stringify({
@@ -22,7 +20,7 @@ form.addEventListener('submit', (e) => {
 
   message.textContent = 'this far';
 
-  fetch('https://grind-check.herokuapp.com/user/login', {
+  await fetch('https://grind-check.herokuapp.com/user/login', {
     credentials: "include",
     mode: "cors",
     method: 'POST',
@@ -37,7 +35,7 @@ form.addEventListener('submit', (e) => {
       return alert_msg.textContent = 'Incorrect email or password';
     } else {
       message.textContent = 'in fetch';
-    return response.json()
+      return response.json()
   }
   }).then((json) => {
     message.textContent = 'final then';
