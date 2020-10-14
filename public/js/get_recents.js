@@ -15,7 +15,7 @@ const getRecents = (amount) => {
   }
   const token = document.cookie.match(REGEXP)[0]
 
-  return fetch('https://grind-check.herokuapp.comentries/recents/' + amount, {
+  return fetch('https://grind-check.herokuapp.com/entries/recents/' + amount, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

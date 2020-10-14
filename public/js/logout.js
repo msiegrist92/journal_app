@@ -10,7 +10,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     return window.location = '/';
   }
   const token = document.cookie.match(REGEXP)[0]
-  await fetch('https://grind-check.herokuapp.comuser/logout', {
+  await fetch('https://grind-check.herokuapp.com/user/logout', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",
