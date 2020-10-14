@@ -83,6 +83,7 @@ form {
   position: absolute;
   top: 120px;
   transition: 2s;
+  margin: 0;
 }
 
 .field {
@@ -152,10 +153,6 @@ select {
   #entry_cont {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(5, auto);
-  }
-
-  #edit_cont {
-    display: block;
   }
 
   textarea {

@@ -1,5 +1,3 @@
-alert('loaded search_date');
-
 const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'work',
   'notes'];
 
