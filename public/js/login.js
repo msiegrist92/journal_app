@@ -3,6 +3,7 @@ const form = document.querySelector('form');
 const ok_msg = document.getElementById('create_ok');
 const alert_msg = document.getElementById('alert_msg');
 const hide_msg = document.getElementById('hide_msg');
+const message = document.getElementById('message');
 
 hide_msg.addEventListener('click', (e) => {
   ok_msg.style.display = 'none';
@@ -17,6 +18,7 @@ form.addEventListener('submit', async (e) => {
     password: document.getElementsByName('password')[0].value
   })
 
+  message.textContent = 'this far';
 
   await fetch ('https://grind-check.herokuapp.com/user/login', {
     credentials: "include",
@@ -35,7 +37,7 @@ form.addEventListener('submit', async (e) => {
     return response.json()
   }
   }).then((json) => {
-
+    message.textContent = 'final then';
     const now = new Date().getTime();
     let to_expire = now + 1800000;
     to_expire = new Date(to_expire);
