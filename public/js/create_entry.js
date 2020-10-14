@@ -80,5 +80,6 @@ form.addEventListener("submit", async (event) => {
 })
 
 hide_msg.addEventListener('click', (e) => {
+  e.preventDefault();
   ok_msg.style.display = 'none';
 })

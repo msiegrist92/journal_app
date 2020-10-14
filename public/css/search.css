@@ -2,8 +2,6 @@ body, html {
   overflow-x: hidden;
 }
 
-const grid_areas = ['date_inp', 'submit', 'date', 'entry_cont', 'form'];
-
 #date_inp {
   grid-area: date_inp;
 }
