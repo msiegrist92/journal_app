@@ -34,6 +34,7 @@ form.addEventListener('submit', (e) => {
       window.scrollTo(0, 0);
       return alert_msg.textContent = 'Incorrect email or password';
     } else {
+      message.textContent = 'in fetch';
     return response.json()
   }
   }).then((json) => {
