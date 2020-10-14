@@ -68,20 +68,20 @@ router.get('/user/me', auth, async (req, res) => {
 
 //this route is only for updating user password
 router.patch('/user/me', json_parser, auth, async (req, res) => {
-  const updates = Object.keys(req.body);
   const allowed = ['old_pw', 'new_pw'];
 
   //hash body.old_pw and compare to req.user.pass in db
   //if not match res.send(400).('invalid password')
+  console.log(req.user.password);
   if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
-    res.status(401);
+    return res.status(401);
   }
 
   try {
     req.user.password = req.body.new_pw;
     await req.user.save();
 
-    res.status(200).send('user deleted');
+    res.status(200).send('password changed');
   } catch (err) {
     res.status(500).send(err)
   }

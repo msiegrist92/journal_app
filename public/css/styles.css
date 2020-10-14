@@ -4,6 +4,10 @@ lighter green tint hover D2F4E6
 darker green tint #248F62
 */
 
+button {
+  -webkit-appearance: none !important;
+}
+
 body {
   margin: 0;
   width: 100%;
