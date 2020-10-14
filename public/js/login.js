@@ -45,4 +45,5 @@ form.addEventListener('submit', (e) => {
     document.cookie = "token=" + json.token.token + ';expires=' + to_expire;
     window.location = "https://grind-check.herokuapp.com/create"
   })
+  message.textContent = 'below fetch';
 })
