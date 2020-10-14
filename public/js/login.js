@@ -10,7 +10,7 @@ hide_msg.addEventListener('click', (e) => {
 })
 
 
-form.addEventListener('submit', async (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault();
 
   const data = JSON.stringify({
@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
 
   message.textContent = 'this far';
 
-  await fetch ('https://grind-check.herokuapp.com/user/login', {
+  fetch('https://grind-check.herokuapp.com/user/login', {
     credentials: "include",
     mode: "cors",
     method: 'POST',
