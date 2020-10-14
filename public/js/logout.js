@@ -6,6 +6,7 @@ const logout = document.getElementById('logout');
 
 
 logout.addEventListener('click', async (e) => {
+  alert('what in the fuck');
   alert(document.cookie);
   e.preventDefault();
   alert(document.cookie);
