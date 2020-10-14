@@ -4,7 +4,6 @@ body {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top;
 }
 
 #splash {
@@ -38,6 +37,7 @@ body {
   margin: 2% auto;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, auto);
+  gap: 2rem;
 }
 
 #blurbs h2 {
