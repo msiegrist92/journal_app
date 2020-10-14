@@ -2,6 +2,74 @@ textarea {
   resize: none;
 }
 
+#date_lab {
+  grid-area: date_lab;
+}
+
+#date {
+  grid-area: date;
+}
+
+#sleep_lab {
+  grid-area: sleep_lab;
+}
+
+#sleep {
+  grid-area: sleep;
+}
+
+#diet_lab {
+  grid-area: diet_lab;
+}
+
+#diet {
+  grid-area: diet;
+}
+
+#exp_lab {
+  grid-area: exp_lab;
+}
+
+#expenses {
+  grid-area: expenses;
+}
+
+#inc_lab {
+  grid-area: inc_lab;
+}
+
+#income {
+  grid-area: income;
+}
+
+#exer_lab {
+  grid-area: exer_lab;
+}
+
+#exercise {
+  grid-area: exercise;
+}
+
+#work_lab {
+  grid-area: work_lab;
+}
+
+#work {
+  grid-area: work;
+}
+
+#notes_lab {
+  grid-area: notes_lab;
+}
+
+#notes {
+  grid-area: notes;
+}
+
+#submit {
+  grid-area: submit;
+}
+
 form {
   background-color: #E5F9F1;
   border: 3px solid #269D6B;
