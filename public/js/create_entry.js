@@ -1,3 +1,5 @@
+alert('create.js');
+
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
 const ok_msg = document.getElementById('create_ok');

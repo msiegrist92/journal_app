@@ -1,3 +1,5 @@
+alert('date_rege.js');
+
 //formats Date.toString() to same format as used in the database
 //following REGEXPS work with date().toString() as stored in DB
 const formatDate = string_date => {
