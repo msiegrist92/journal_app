@@ -10,7 +10,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     return window.location = '/';
   }
   const token = document.cookie.match(REGEXP)[0]
-  await fetch('https://grind-check.herokuapp.com/user/logout', {
+  await fetch('/user/logout', {
     credentials: "include",
     mode: "cors",
     method: 'POST',
@@ -20,6 +20,6 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     }
   }).then((response) => {
     deleteCookie('token');
-    window.location = "https://grind-check.herokuapp.com/"
+    window.location = "/"
   })
 })

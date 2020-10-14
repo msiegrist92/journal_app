@@ -23,7 +23,7 @@ register_form.addEventListener('submit', async (e) => {
     email: document.getElementsByName('email')[0].value,
     password: document.getElementsByName('password')[0].value
   })
-  await fetch('https://grind-check.herokuapp.com/user', {
+  await fetch('/user', {
     credentials: "include",
     mode: "cors",
     method: 'POST',
@@ -44,6 +44,6 @@ register_form.addEventListener('submit', async (e) => {
     to_expire = new Date(to_expire);
     to_expire = to_expire.toGMTString();
     document.cookie = "token=" + json.token.token + ';expires=' + to_expire;
-    window.location = "https://grind-check.herokuapp.com/create"
+    window.location = "/create"
   })
 })

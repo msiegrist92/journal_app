@@ -39,7 +39,7 @@ form.addEventListener("submit", async (event) => {
 
     let found = false;
 
-    await fetch("https://grind-check.herokuapp.com/entries/months/" + month, {
+    await fetch("/entries/months/" + month, {
       credentials: "include",
       mode: "cors",
       method: "GET",
@@ -64,7 +64,7 @@ form.addEventListener("submit", async (event) => {
     } else {
       const data = JSON.stringify(entry);
 
-      await fetch("https://grind-check.herokuapp.com/entries", {
+      await fetch("/entries", {
         credentials: "include",
         mode: "cors",
         method: 'POST',

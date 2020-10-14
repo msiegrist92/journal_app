@@ -18,7 +18,6 @@ form.addEventListener('submit', async (e) => {
     password: document.getElementsByName('password')[0].value
   })
 
-  message.textContent = 'this far';
 
   await fetch('/user/login', {
     credentials: "include",
@@ -34,17 +33,14 @@ form.addEventListener('submit', async (e) => {
       window.scrollTo(0, 0);
       return alert_msg.textContent = 'Incorrect email or password';
     } else {
-      message.textContent = 'in fetch';
       return response.json()
   }
   }).then((json) => {
-    message.textContent = 'final then';
     const now = new Date().getTime();
     let to_expire = now + 1800000;
     to_expire = new Date(to_expire);
     to_expire = to_expire.toGMTString();
     document.cookie = "token=" + json.token.token + ';expires=' + to_expire;
-    window.location = "https://grind-check.herokuapp.com/create"
+    window.location = "/create"
   })
-  message.textContent = 'below fetch';
 })
