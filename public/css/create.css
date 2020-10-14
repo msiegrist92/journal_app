@@ -94,7 +94,7 @@ input {
 @media only screen and (max-width: 520px){
 
   form {
-    width: 90%;
+    width: 100%;
     grid-template-rows: repeat(12, auto);
     grid-template-areas:
     "date_lab date_lab date date"
@@ -108,15 +108,15 @@ input {
     "work work work work"
     ". notes_lab notes_lab ."
     "notes notes notes notes"
-    "submit submit submit submit"
+    "submit submit submit submit";
   }
 
   label {
-    font-size: 1.5rem;
+    font-size: .75rem;
   }
 
   .field {
-    width: 80%;
+    width: 100%;
   }
 
   .small_input {
@@ -128,9 +128,3 @@ input {
     margin: 5% auto;
   }
 }
-
-/* @media only screen and (max-width: 550px){
-  label {
-    font-size: 1rem;
-  }
-} */

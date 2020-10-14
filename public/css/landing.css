@@ -1,8 +1,9 @@
 body {
   background-color: #F0FBF7;
   background-image: url('../images/land_bg.svg');
-  background-attachment: fixed;
   background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
 }
 
 #splash {
