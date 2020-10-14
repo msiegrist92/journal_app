@@ -14,7 +14,7 @@ const getEntries = async (date) => {
   const token = document.cookie.match(REGEXP)[0]
 
   let uri_date = encodeURI(date)
-  await fetch('/entries/' + uri_date, {
+  await fetch(process.env.URL + '/entries/' + uri_date, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',

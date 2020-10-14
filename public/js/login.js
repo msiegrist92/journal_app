@@ -18,7 +18,7 @@ form.addEventListener('submit', async (e) => {
   })
 
 
-  await fetch ('/user/login', {
+  await fetch (process.env.URL + '/user/login', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json"

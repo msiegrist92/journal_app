@@ -16,7 +16,7 @@ const getRecents = (amount) => {
   }
   const token = document.cookie.match(REGEXP)[0]
 
-  return fetch('entries/recents/' + amount, {
+  return fetch(process.env.URL + 'entries/recents/' + amount, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",

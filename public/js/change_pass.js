@@ -31,7 +31,7 @@ form.addEventListener('submit', async (e) => {
     new_pw
   })
 
-  const response = await fetch('/user/me', {
+  const response = await fetch(process.env.URL + '/user/me', {
     method: 'PATCH',
     headers : {
       'Content-Type': 'application/json',

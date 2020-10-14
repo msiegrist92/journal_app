@@ -10,7 +10,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     return window.location = '/';
   }
   const token = document.cookie.match(REGEXP)[0]
-  await fetch('user/logout', {
+  await fetch(process.env.URL + 'user/logout', {
     method: 'POST',
     headers: {
       "Content-Type": "application/json",

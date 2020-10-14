@@ -1,9 +1,3 @@
-const gridAreaStyle = elements => {
-  for (element of elements){
-    document.getElementById(element).style.gridArea = element;
-  }
-}
-
 const addDateButtonDOM = id => {
   const btn_cont = document.getElementById('btn_cont');
   let button = document.createElement('button');

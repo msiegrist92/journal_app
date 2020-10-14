@@ -23,7 +23,7 @@ register_form.addEventListener('submit', async (e) => {
     email: document.getElementsByName('email')[0].value,
     password: document.getElementsByName('password')[0].value
   })
-  await fetch('/user', {
+  await fetch(process.env.URL + '/user', {
     method: 'POST',
     headers: {
       'Content-Type': "application/json"

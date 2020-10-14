@@ -23,7 +23,7 @@ const getEntries = (month_name) => {
     return alert("Token expired please log in");
   }
   const token = document.cookie.match(REGEXP)[0]
-  return fetch('entries/months/' + month_name, {
+  return fetch(process.env.URL + 'entries/months/' + month_name, {
     method: 'GET',
     headers: {
       "Content-Type": "application/json",
