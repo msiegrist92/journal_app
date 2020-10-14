@@ -1,3 +1,5 @@
+import 'whatwg-fetch';
+
 const form = document.querySelector('form');
 
 const ok_msg = document.getElementById('create_ok');
