@@ -59,7 +59,7 @@ edit_cont.addEventListener('submit', async (e) => {
   }
   const token = document.cookie.match(REGEXP)[0]
 
-  await fetch(process.env.URL + "/entries/" + URI_date, {
+  await fetch("https://grind-check.herokuapp.com/entries/" + URI_date, {
     method: 'PATCH',
     headers: {
       "Content-Type": 'application/json',

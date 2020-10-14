@@ -39,7 +39,7 @@ form.addEventListener("submit", async (event) => {
 
     let found = false;
 
-    await fetch(process.env.URL + "/entries/months/" + month, {
+    await fetch("https://grind-check.herokuapp.com/entries/months/" + month, {
       method: "GET",
       headers: {
         "Content-Type": 'application/json',
@@ -62,7 +62,7 @@ form.addEventListener("submit", async (event) => {
     } else {
       const data = JSON.stringify(entry);
 
-      await fetch(process.env.URL + "/entries", {
+      await fetch("https://grind-check.herokuapp.com/entries", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
