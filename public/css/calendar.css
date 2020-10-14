@@ -10,7 +10,7 @@
   width: 100%;
   margin: 2% auto;
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, .95fr);
   grid-template-rows: repeat(5, 120px);
 }
 
