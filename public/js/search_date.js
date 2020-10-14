@@ -8,17 +8,16 @@ const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'wo
 const getEntries = async (date) => {
 
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
-  if(document.cookie.match(REGEXP) === null){
-    return alert("Token expired please log in");
+  if(!sessionStorage.token){
+    return alert("Session expired please log in");
   }
-  const token = document.cookie.match(REGEXP)[0]
 
   let uri_date = encodeURI(date)
   await fetch('/entries/' + uri_date, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": token
+      "Authorization": sessionStorage.token
     },
   }).then((data) => {
     return data.json()

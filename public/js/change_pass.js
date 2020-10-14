@@ -20,11 +20,9 @@ form.addEventListener('submit', async (e) => {
 
 
 
-  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
-  if(document.cookie.match(REGEXP) === null){
-    return alert("Token expired please log in");
+  if(!sessionStorage.token){
+    return alert("Session expired please log in");
   }
-  const token = document.cookie.match(REGEXP)[0]
 
   const passwords = JSON.stringify({
     old_pw,
@@ -37,7 +35,7 @@ form.addEventListener('submit', async (e) => {
     method: 'PATCH',
     headers : {
       'Content-Type': 'application/json',
-      "Authorization": token
+      "Authorization": sessionStorage.token
     },
     body: passwords
 

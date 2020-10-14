@@ -1,5 +1,3 @@
-alert('create.js');
-
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
 const ok_msg = document.getElementById('create_ok');
@@ -27,11 +25,10 @@ form.addEventListener("submit", async (event) => {
   } else {
 
     const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
-    if(document.cookie.match(REGEXP) === null){
-      return alert("Token expired please log in");
+    if(!sessionStorage.token){
+      return alert("Session expire please log in");
     }
 
-    const token = document.cookie.match(REGEXP)[0]
 
     entry.date = mmddyyToStr(entry.date);
 
@@ -47,7 +44,7 @@ form.addEventListener("submit", async (event) => {
       method: "GET",
       headers: {
         "Content-Type": 'application/json',
-        "Authorization": token
+        "Authorization": sessionStorage.token
       }
     }).then((data) => {
       return data.json()
@@ -72,7 +69,7 @@ form.addEventListener("submit", async (event) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": token
+          "Authorization": sessionStorage.token
         },
         body: data
       }).then((data) => {

@@ -1,5 +1,3 @@
-alert('months.js')
-
 const months = [{
   name: "January",
   days: 31,

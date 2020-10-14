@@ -53,11 +53,9 @@ edit_cont.addEventListener('submit', async (e) => {
   const data = JSON.stringify(entry);
   const URI_date = encodeURI(document.getElementById('date').textContent);
 
-  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
-  if(document.cookie.match(REGEXP) === null){
-    return alert("Token expired please log in");
+  if(!sessionStorage.token){
+    return alert("Session expired please log in");
   }
-  const token = document.cookie.match(REGEXP)[0]
 
   await fetch("/entries/" + URI_date, {
     credentials: "include",
@@ -65,7 +63,7 @@ edit_cont.addEventListener('submit', async (e) => {
     method: 'PATCH',
     headers: {
       "Content-Type": 'application/json',
-      "Authorization": token
+      "Authorization": sessionStorage.token
     },
     body: data
 }).then((response) => {

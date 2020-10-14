@@ -40,8 +40,9 @@ form.addEventListener('submit', async (e) => {
     let to_expire = now + 1800000;
     to_expire = new Date(to_expire);
     to_expire = to_expire.toGMTString();
-    document.cookie = "token=" + json.token.token + ';expires=' + to_expire;
-    alert(document.cookie);
+    document.cookie = 'token=' + json.token.token;
+    console.log(document.cookie);
+    sessionStorage.setItem('token', json.token.token);
     window.location = "/create"
   })
 })

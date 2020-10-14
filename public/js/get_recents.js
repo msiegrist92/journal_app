@@ -9,11 +9,9 @@ const date_btns = ["btn_1", "btn_2", "btn_3"];
 const go_btn = document.getElementById('go');
 
 const getRecents = (amount) => {
-  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
-  if(document.cookie.match(REGEXP) === null){
-    return alert("Token expired please log in");
+  if(!sessionStorage.token){
+    return alert("Session expired please log in");
   }
-  const token = document.cookie.match(REGEXP)[0]
 
   return fetch('/entries/recents/' + amount, {
     credentials: "include",
@@ -21,7 +19,7 @@ const getRecents = (amount) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization": token
+      "Authorization": sessionStorage.token
     }
   })
   .then((response) => {
