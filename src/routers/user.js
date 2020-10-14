@@ -72,8 +72,8 @@ router.patch('/user/me', json_parser, auth, async (req, res) => {
 
   //hash body.old_pw and compare to req.user.pass in db
   //if not match res.send(400).('invalid password')
-  console.log(req.user.password);
   if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
+    console.log('not match')
     return res.status(401);
   }
 
