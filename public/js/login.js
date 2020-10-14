@@ -20,7 +20,7 @@ form.addEventListener('submit', async (e) => {
 
   message.textContent = 'this far';
 
-  await fetch('https://grind-check.herokuapp.com/user/login', {
+  await fetch('/user/login', {
     credentials: "include",
     mode: "cors",
     method: 'POST',
