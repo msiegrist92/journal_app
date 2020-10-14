@@ -40,8 +40,8 @@ textarea {
 }
 
 .small_input {
-  width: 72.5%;
-  margin-right: 20%;
+  width: 60%;
+  margin: 0 auto;
 }
 
 input {
@@ -76,7 +76,7 @@ input {
   color: black;
 }
 
-@media only screen and (max-width: 645px){
+@media (max-width: 645px){
 
   form {
     grid-gap: 1rem;
@@ -91,7 +91,7 @@ input {
   }
 }
 
-@media only screen and (max-width: 520px){
+@media (max-width: 520px){
 
   form {
     width: 100%;
