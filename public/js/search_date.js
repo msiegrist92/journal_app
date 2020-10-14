@@ -1,3 +1,5 @@
+alert('loaded search_date');
+
 const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'work',
   'notes'];
 
@@ -7,7 +9,6 @@ const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'wo
 
 const getEntries = async (date) => {
 
-  const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
   if(!sessionStorage.token){
     return alert("Session expired please log in");
   }

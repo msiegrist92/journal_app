@@ -1,3 +1,5 @@
+alert('loaded create_entry');
+
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
 const ok_msg = document.getElementById('create_ok');
@@ -24,7 +26,7 @@ form.addEventListener("submit", async (event) => {
     return alert_msg.textContent = 'Invalid date format - use mm/dd/yy'
   } else {
 
-    const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
+
     if(!sessionStorage.token){
       return alert("Session expire please log in");
     }
