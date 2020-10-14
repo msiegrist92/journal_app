@@ -2,8 +2,11 @@ const deleteCookie = name => {
   document.cookie = name + '=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
+const logout = document.getElementById('logout');
 
-document.getElementById('logout').addEventListener('click', async (e) => {
+
+logout.addEventListener('click', async (e) => {
+  alert(document.cookie);
   e.preventDefault();
   alert(document.cookie);
   const REGEXP = /(?<=token=)[\w-]+\.[\w-]+\.[\w-]+/
@@ -22,6 +25,7 @@ document.getElementById('logout').addEventListener('click', async (e) => {
     }
   }).then((response) => {
     deleteCookie('token');
+    alert('cookie deleted');
     window.location = "/"
   })
 })
