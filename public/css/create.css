@@ -96,6 +96,7 @@ input {
   form {
     width: 100%;
     grid-template-rows: repeat(12, auto);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-areas:
     "date_lab date_lab date date"
     "sleep_lab sleep_lab sleep sleep"
