@@ -47,7 +47,6 @@ body {
 @media (max-width: 720px){
   #blurbs {
     overflow: auto;
-    white-space: pre-wrap;
     grid-template-columns: repeat(3, 70vw);
   }
 
