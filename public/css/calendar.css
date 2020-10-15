@@ -28,7 +28,7 @@
   border-radius: 10px;
   height: 120px;
   box-sizing: border-box;
-  /* white-space: pre; */
+  white-space: pre;
   font-weight: bold;
 }
 
