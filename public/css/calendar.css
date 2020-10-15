@@ -64,7 +64,7 @@ em {
   }
 
   #month {
-    width: 90vw;
+    width: 100%;
     margin: 2% auto;
   }
 
@@ -74,7 +74,7 @@ em {
   }
 
   #days_cont {
-    width: 100%;
+    width: 95%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 10%;
