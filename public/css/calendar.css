@@ -1,17 +1,17 @@
 #calendar {
   display: grid;
-  grid-template-rows: repeat(2, auto) 1fr;
-  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: repeat(7, 1fr);
   width: 95%;
   margin: 0 auto;
 }
 
 #days_cont {
-  width: 100%;
-  margin: 2% auto 5% auto;
+  width: 95%;
   display: grid;
+  grid-template-rows: repeat(6, auto);
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 120px);
+  margin: 2% auto 5% auto;
 }
 
 #days_cont div {
@@ -20,11 +20,13 @@
 
 #month, #inc_exp {
   text-align: center;
+  margin: 2% auto;
 }
 
 .day {
   border: 2px solid black;
   border-radius: 10px;
+  height: 120px;
   white-space: pre;
   font-weight: bold;
 }
@@ -48,6 +50,8 @@ em {
 #month {
   width: 90%;
   margin: 2% auto;
+  grid-row: 1 / 2;
+  grid-column: 1 / 8;
 }
 
 #inc_exp {
@@ -55,6 +59,8 @@ em {
   margin: 2% auto;
   white-space: pre;
   text-align: center;
+  grid-row: 2 / 3;
+  grid-column: 1 / 8;
 }
 
 @media only screen and (max-width: 600px){
@@ -63,15 +69,6 @@ em {
     width: 100vw;
   }
 
-  #month {
-    width: 100%;
-    margin: 2% auto;
-  }
-
-  #calendar {
-    width: 100%;
-    margin: 2% auto;
-  }
 
   #days_cont {
     width: 95%;
