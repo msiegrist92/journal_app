@@ -54,12 +54,12 @@ const addEntryData = (date, match) => {
   }
   let exp = document.createElement('em');
   date.appendChild(exp);
-  exp.textContent += '\n' + 'Expenses : ' + match.expenses;
+  exp.textContent += '\n' + 'Expenses ' + match.expenses;
 
   if(match.income > 0){
     let inc = document.createElement('em');
     date.appendChild(inc);
-    inc.textContent += '\n' + 'Income : ' + match.income;
+    inc.textContent += '\n' + 'Income ' + match.income;
   }
 }
 
