@@ -10,7 +10,7 @@
   width: 100%;
   margin: 2% auto 5% auto;
   display: grid;
-  grid-template-columns: repeat(7, .95fr);
+  grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 120px);
 }
 
@@ -63,6 +63,10 @@ em {
     width: 100vw;
   }
 
+  #month {
+    width: 95vw;
+  }
+
   #calendar {
     width: 95vw;
     margin: 2% auto;
@@ -76,7 +80,7 @@ em {
   }
 
   .day {
-    font-size: .7rem;
+    font-size: .5rem;
   }
 
   em {
