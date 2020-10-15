@@ -61,11 +61,10 @@ em {
 
   body {
     width: 100vw;
-    position: fixed;
   }
 
   #month {
-    width: 95vw;
+    width: 90vw;
     margin: 2% auto;
   }
 
