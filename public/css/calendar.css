@@ -62,9 +62,12 @@ em {
   #calendar {
     width: 100vw;
   }
+
   #days_cont {
-    width: 100%;
+    width: 95vw;
     margin-bottom: 10%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .day {
