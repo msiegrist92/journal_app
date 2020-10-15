@@ -65,22 +65,23 @@ em {
 
   #month {
     width: 95vw;
+    margin: 2% auto;
   }
 
   #calendar {
-    width: 95vw;
+    width: 100%;
     margin: 2% auto;
   }
 
   #days_cont {
-    width: 95vw;
-    margin-bottom: 10%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 10%;
   }
 
   .day {
-    font-size: .5rem;
+    font-size: .6rem;
   }
 
   em {
