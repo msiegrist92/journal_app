@@ -27,11 +27,17 @@ edit.addEventListener("click", (e) =>  {
 
 
   if(mobile.matches){
-    edit_cont.style.left = "2.5%";
-    edit_cont.style.right = "2.5%";
+    edit_cont.style.display = 'block';
+    setTimeout(() => {
+      edit_cont.style.left = "2.5%";
+      edit_cont.style.right = "2.5%";
+    }, 1)
   } else {
-    edit_cont.style.left = '12.5%';
-    edit_cont.style.right = '12.5%';
+    edit_cont.style.display = 'block';
+    setTimeout(() => {
+      edit_cont.style.left = "2.5%";
+      edit_cont.style.right = "2.5%";
+    }, 1);
   }
 
   body.style.overflow = 'visible';
@@ -66,21 +72,25 @@ edit_cont.addEventListener('submit', async (e) => {
       "Authorization": sessionStorage.token
     },
     body: data
-}).then((response) => {
+}).then(async (response) => {
   edit_msg.style.display = 'block';
   alert_msg.textContent = 'Edit successful'
   window.scrollTo(0, 0);
   edit_cont.style.right = '-3000px';
   edit_cont.style.left = '1000px';
-  body.style.overflow = 'hidden';
+  await setTimeout(() => {
+    edit_cont.style.display = 'none';
+  }, 1200);
 })
 })
 
-back_arrow.addEventListener('click', (e) => {
+back_arrow.addEventListener('click', async (e) => {
   e.preventDefault();
   edit_cont.style.right = '-3000px';
   edit_cont.style.left = '1000px';
-  body.style.overflow = 'hidden';
+  await setTimeout(() => {
+    edit_cont.style.display = 'none';
+  }, 1200);
 })
 
 hide_msg.addEventListener('click', (e) => {

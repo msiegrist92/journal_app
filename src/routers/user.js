@@ -35,7 +35,6 @@ router.post('/user/login', json_parser, async (req, res) => {
   try {
     const user = await User.findUser(req.body.email, req.body.password);
     if(user === null){
-      console.log('null af');
     }
     const token = await user.generateAuthToken();
     res.status(201).send({user, token});
@@ -73,7 +72,6 @@ router.patch('/user/me', json_parser, auth, async (req, res) => {
   //hash body.old_pw and compare to req.user.pass in db
   //if not match res.send(400).('invalid password')
   if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
-    console.log('not match')
     return res.status(401).send();
   }
 

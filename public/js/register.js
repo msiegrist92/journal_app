@@ -44,7 +44,6 @@ register_form.addEventListener('submit', async (e) => {
     to_expire = new Date(to_expire);
     to_expire = to_expire.toGMTString();
     document.cookie = 'token=' + json.token.token;
-    console.log(document.cookie);
     sessionStorage.setItem('token', json.token.token);
     window.location = "/create"
   })

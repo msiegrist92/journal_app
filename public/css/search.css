@@ -24,7 +24,6 @@ body, html {
 
 
 #grid_cont {
-  overflow-x: hidden !important;
   display: grid;
   margin: 0 auto;
   max-width: 1200px;
@@ -84,7 +83,7 @@ form {
   position: absolute;
   top: 120px;
   transition: 2s;
-  margin: 0;
+  display: none;
 }
 
 .field {

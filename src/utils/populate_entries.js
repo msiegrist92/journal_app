@@ -1,6 +1,8 @@
 
 const User = require('../db/schemas/user.js');
 
+const date_regex = require('./date_regex.js');
+
 const allowed = ['sleep', 'diet', 'expenses', 'income', 'exercise',
 'work', 'notes'];
 
@@ -23,7 +25,6 @@ const getByDate = async (user_id, date) => {
 const getRecents = async (user_id, amount) => {
   const user = await User.findById(user_id)
   const entries = await user.populate('entries').execPopulate();
-  user.entries.reverse();
   user.entries.length = amount;
   return user.entries;
 }
@@ -57,6 +58,7 @@ const verifyUpdate = (body) => {
   const isValid = input_attempt.every((keys) => allowed.includes(keys));
   return isValid;
 }
+
 
 module.exports = {
   getAll : getAll,
