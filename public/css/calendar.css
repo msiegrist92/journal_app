@@ -8,7 +8,7 @@
 
 #days_cont {
   width: 100%;
-  margin: 2% auto;
+  margin: 2% auto 5% auto;
   display: grid;
   grid-template-columns: repeat(7, .95fr);
   grid-template-rows: repeat(5, 120px);
@@ -60,10 +60,11 @@ em {
 @media only screen and (max-width: 600px){
 
   #calendar {
-    width: 100%;
+    width: 100vw;
   }
   #days_cont {
     width: 100%;
+    margin-bottom: 10%;
   }
 
   .day {

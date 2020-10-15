@@ -5,7 +5,7 @@ document.getElementById('month').textContent = months[today.getMonth()].name;
 
 const fillFirstWeek = () => {
   let first_day = document.querySelector('.day').textContent.split('\n')[1]
-  let to_fill = days.indexOf(first_day);
+  let to_fill = days_abbr.indexOf(first_day);
   let parent_element = document.getElementById('days_cont');
   for(let i = 0; i < to_fill; i++){
     parent_element.prepend(document.createElement('div'));

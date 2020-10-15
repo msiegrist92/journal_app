@@ -18,6 +18,7 @@ const createCal = () => {
   let to_render = {};
   for(let i = 1; i <= month_length; i++){
     let day = months_objs.days[new Date(year, month, i).getDay()];
+    day = day.substring(0, 3);
     let date = '';
     if(i < 10){
       date = '0' + i.toString();

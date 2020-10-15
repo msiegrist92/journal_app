@@ -78,3 +78,13 @@ const days = ['Sunday',
   'Thursday',
   'Friday',
   'Saturday'];
+
+const days_abbr = [
+  'Sun',
+  "Mon",
+  'Tue',
+  'Wed',
+  'Thu',
+  'Fri',
+  'Sat',
+]
