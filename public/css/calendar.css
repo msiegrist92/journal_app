@@ -59,8 +59,13 @@ em {
 
 @media only screen and (max-width: 600px){
 
-  #calendar {
+  body {
     width: 100vw;
+  }
+
+  #calendar {
+    width: 95vw;
+    margin: 2% auto;
   }
 
   #days_cont {
