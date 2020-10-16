@@ -21,7 +21,7 @@ form.addEventListener('submit', async (e) => {
 
 
   if(!sessionStorage.token){
-    return alert("Session expired please log in");
+    return displayMsg("Session expired please log in");
   }
 
   const passwords = JSON.stringify({

@@ -26,7 +26,7 @@ form.addEventListener("submit", async (event) => {
 
 
     if(!sessionStorage.token){
-      return alert("Session expire please log in");
+      return displayMsg('Session expired please log in');
     }
 
 

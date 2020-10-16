@@ -1,14 +1,7 @@
 const form = document.querySelector('form');
 
-const ok_msg = document.getElementById('create_ok');
-const alert_msg = document.getElementById('alert_msg');
-const hide_msg = document.getElementById('hide_msg');
-
-
-hide_msg.addEventListener('click', (e) => {
-  ok_msg.style.display = 'none';
-})
-
+displayMsg('Accounts created on 10/15 will need to be recreated due to a database error')
+;
 
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -29,9 +22,7 @@ form.addEventListener('submit', async (e) => {
     body : data
   }).then((response) => {
     if (response.status === 500){
-      ok_msg.style.display = 'block';
-      window.scrollTo(0, 0);
-      return alert_msg.textContent = 'Incorrect email or password';
+      return displayMsg('Incorrect email or password');
     } else {
       return response.json()
   }

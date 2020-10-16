@@ -8,7 +8,7 @@ const data_els = ['date', 'sleep', 'diet', 'expenses', 'income', 'exercise', 'wo
 const getEntries = async (date) => {
 
   if(!sessionStorage.token){
-    return alert("Session expired please log in");
+    return displayMsg('Session expired please log in');
   }
 
   let uri_date = encodeURI(date)

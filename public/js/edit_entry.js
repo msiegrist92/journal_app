@@ -5,10 +5,7 @@ const edit_button = document.getElementById("edit");
 const edit_cont = document.getElementById('edit_cont');
 const back_arrow = document.getElementById('back_arrow');
 const body = document.querySelector('body');
-const edit_msg = document.getElementById('edit_ok');
-const hide = document.getElementById('hide_msg');
 const sleep = document.getElementById('sleep');
-const alert_msg = document.getElementById('alert_msg');
 
 const fields = ['exercise', 'work', 'notes', 'sleep', 'diet', 'expenses', 'income'];
 
@@ -20,9 +17,7 @@ edit.addEventListener("click", (e) =>  {
 
 
   if(sleep.textContent.length < 1){
-    edit_msg.style.display = 'block';
-    window.scrollTo(0, 0);
-    return alert_msg.textContent = 'No entry chosen'
+    return displayMsg('No entry chosen');
   }
 
 
@@ -60,7 +55,7 @@ edit_cont.addEventListener('submit', async (e) => {
   const URI_date = encodeURI(document.getElementById('date').textContent);
 
   if(!sessionStorage.token){
-    return alert("Session expired please log in");
+    return displayMsg("Session expired please log in");
   }
 
   await fetch("/entries/" + URI_date, {
@@ -73,9 +68,7 @@ edit_cont.addEventListener('submit', async (e) => {
     },
     body: data
 }).then(async (response) => {
-  edit_msg.style.display = 'block';
-  alert_msg.textContent = 'Edit successful'
-  window.scrollTo(0, 0);
+  displayMsg('Edit successful')
   edit_cont.style.right = '-3000px';
   edit_cont.style.left = '1000px';
   await setTimeout(() => {
