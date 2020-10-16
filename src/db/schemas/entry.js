@@ -61,8 +61,7 @@ const entry_schema = Schema({
   //when creating an entry the date will always be the default value
   date: {
     type: String,
-    default: formatDate.formatDate(new Date().toString()),
-    unique: true
+    required: true
   }
 })
 
