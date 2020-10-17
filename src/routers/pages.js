@@ -39,6 +39,10 @@ router.get('/recent', async (req, res) => {
   await res.render('recent', in_links);
 })
 
+router.get('/help', async (req, res) => {
+  await res.render('help', in_links);
+})
+
 router.get('/calendar', async (req, res) => {
   let cal = calendar.createCal();
   await res.render('calendar', cal);

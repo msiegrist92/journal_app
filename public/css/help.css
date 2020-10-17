@@ -1,0 +1,13 @@
+/*determine grid styles for both page and partials*/
+/*javascript file contains the :nth rule for swapping the elements within every other partials
+this is scalable*/
+#wrap {
+  max-width: 2000px;
+  width: 100%;
+}
+
+#help_cont {
+  border:
+}
+{{>help_cont}}
+    {{>help_cont}}
