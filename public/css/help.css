@@ -2,12 +2,35 @@
 /*javascript file contains the :nth rule for swapping the elements within every other partials
 this is scalable*/
 #wrap {
+  margin: 5% auto;
   max-width: 2000px;
   width: 100%;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-template-columns: 80%;
+  grid-gap: 4rem;
+  justify-content: center;
 }
 
-#help_cont {
-  border:
+.help_cont {
+  border: 3px solid #32C889;
+  padding: 1.25rem;
+  font-family: "Cabin", serif;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(4, 1fr);
 }
-{{>help_cont}}
-    {{>help_cont}}
+
+.help_text {
+  grid-column: 1 / 4;
+  align-self: center;
+}
+
+.help_img {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+  height: auto;
+  grid-column: 4 / 5;
+}
