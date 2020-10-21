@@ -1,8 +1,13 @@
 /*determine grid styles for both page and partials*/
 /*javascript file contains the :nth rule for swapping the elements within every other partials
 this is scalable*/
+
+body {
+  background-color: #F0FBF7;
+}
+
 #wrap {
-  margin: 5% auto;
+  margin: 0 auto 5% auto;
   max-width: 2000px;
   width: 100%;
   display: grid;
@@ -13,24 +18,118 @@ this is scalable*/
 }
 
 .help_cont {
+  margin: 2% auto;
   border: 3px solid #32C889;
   padding: 1.25rem;
   font-family: "Cabin", serif;
-  width: 100%;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .help_text {
   grid-column: 1 / 4;
   align-self: center;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .help_img {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
   height: auto;
   grid-column: 4 / 5;
+}
+
+b {
+  color: rgba(33, 186, 43, 1);
+}
+
+
+b:first-child {
+  color: rgba(218, 223, 78, 1);
+  font-size: 1.25rem;
+}
+
+button {
+  padding: 1.5rem 2.5rem;
+  width: 25% !important;
+  margin: 2.5% auto 5% auto;
+}
+
+button a {
+  font-size: 2rem;
+}
+
+@media only screen and (max-width: 1000px){
+
+  #wrap {
+    grid-template-columns: 90%;
+    margin: 0 auto;
+  }
+
+  .help_text {
+    grid-column: 1 / 3;
+    font-size: 1rem;
+  }
+
+  .help_img {
+    grid-column: 3 / 5;
+  }
+
+  button a {
+    font-size: 1.5rem;
+  }
+}
+
+/*stack grid items into single columns*/
+
+@media only screen and (max-width: 750px){
+
+  #wrap {
+    gap: 1rem;
+    grid-template-columns: 95%;
+  }
+
+  .help_cont {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .help_text {
+    width: 100%;
+    grid-column: auto;
+    grid-row: auto;
+    margin: 5% auto;
+  }
+
+  .help_img {
+    width: 75%;
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  button {
+    margin-top: 5%;
+    width: 40% !important;
+  }
+
+  button a {
+    font-size: 1.25rem !important;
+  }
+
+}
+
+@media only screen and (max-width: 475px){
+  .help_img {
+    width: 100%;
+  }
+
+  button {
+    width: 55% !important;
+  }
 }

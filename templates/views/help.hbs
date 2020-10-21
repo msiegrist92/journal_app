@@ -13,14 +13,31 @@
 
 <body>
   {{>in_header}}
+  <h1>Welcome!</h1>
+
   <div id="wrap">
-    {{>help_cont img_src='../images/calendar_help.png'}}
-    {{>help_cont img_src='../images/entry_help.png'}}
+
+    {{>help_cont
+      img_src='../images/entry_help.png'
+      help_text="Creating entries is quick and painless. Today's date is already determined,
+      or you can change it if you are backlogging entries. Sleep and diet are rated on a 10 point-scale.
+      0 if you ate ice cream all day or 10 if you're a perfectly balanced caloric macro warrior. Finances are tracked through
+      expenses and income. The three text areas allow you to write quick blurbs about your daily activities. GrindCheck works
+      best when you keep it quick and easy."
+    }}
+
+    {{>help_cont
+        img_src='../images/calendar_help.png'
+        help_text="Our calendar page offers an easy way to review your month. Monthly finances are totalled for you as well as displayed
+        on the day they ocurred. If an entry is highlighted in yellow, the sleep or diet value for the day was below 7. If an entry is green
+        then your sleep and diet values were both above 7. Lack of highlighting indicates that an entry was missed."
+    }}
   </div>
 
   <button class='button' type='button'><a href="/create">Get Started!</a></button>
 
   <script src="../js/nav_menu.js"></script>
   <script src="../js/help_cont_swap.js"></script>
+  <script src='../js/help_highlight.js'></script>
 </body>
 </html>
