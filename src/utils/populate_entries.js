@@ -25,8 +25,9 @@ const getByDate = async (user_id, date) => {
 const getRecents = async (user_id, amount) => {
   const user = await User.findById(user_id)
   const entries = await user.populate('entries').execPopulate();
-  user.entries.length = amount;
-  return user.entries;
+  let reverse = user.entries.reverse();
+  reverse.length = amount;
+  return reverse;
 }
 
 const getByMonth = async (user_id, month) => {
