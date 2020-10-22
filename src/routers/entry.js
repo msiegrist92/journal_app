@@ -57,7 +57,8 @@ router.get('/entries/:date', auth, async (req, res) => {
 router.get('/entries/recents/:amount', auth,  async (req, res) => {
   const amount = parseInt(req.params.amount);
   try {
-    const entries = await pop.getRecents(req.user._id, amount)
+    let entries = await pop.getRecents(req.user._id, amount)
+    entries = entries.reverse();
     res.send(entries);
   } catch (error) {
     res.status(400).send(error);
