@@ -41,13 +41,13 @@ form.addEventListener('submit', async (e) => {
 
   }).then((response) => {
     if(response.status === 401){
-      response_el.textContent = 'Invalid password'
+      return displayMsg('Invalid password')
     }
     if(response.status === 200){
-      response_el.textContent = 'Password changed'
+      return displayMsg('Password changed')
     }
     if(response.status === 500){
-      response_el.textContent = 'Server error, please try again later'
+      return displayMsg('Internal servor error try again later')
     }
   })
 

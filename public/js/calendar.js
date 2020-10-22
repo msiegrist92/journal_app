@@ -19,7 +19,7 @@ const highlightToday = (today) => {
 
 const getEntries = (month_name) => {
   if(!sessionStorage.token){
-    return alert("Session expired please log in");
+    return displayMsg("Session expired please log in");
   }
 
   return fetch('/entries/months/' + month_name, {

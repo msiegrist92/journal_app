@@ -10,7 +10,7 @@ const go_btn = document.getElementById('go');
 
 const getRecents = (amount) => {
   if(!sessionStorage.token){
-    return alert("Session expired please log in");
+    return displayMsg("Session expired please log in");
   }
 
   return fetch('/entries/recents/' + amount, {

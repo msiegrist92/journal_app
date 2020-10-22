@@ -32,6 +32,7 @@ register_form.addEventListener('submit', async (e) => {
     to_expire = to_expire.toGMTString();
     document.cookie = 'token=' + json.token.token;
     sessionStorage.setItem('token', json.token.token);
-    window.location = "/help"
+    displayMsg('Account created');
+    setTimeout(() => window.location = "/help", 2500)
   })
 })

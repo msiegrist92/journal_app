@@ -15,6 +15,10 @@ const mobile = window.matchMedia("(max-width: 500px)");
 edit.addEventListener("click", (e) =>  {
   e.preventDefault();
 
+  if(!sessionStorage.token){
+    return displayMsg('Session expired please log in');
+  }
+
 
   if(sleep.textContent.length < 1){
     return displayMsg('No entry chosen');

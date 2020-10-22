@@ -15,6 +15,7 @@ logout.addEventListener('click', async (e) => {
     }
   }).then((response) => {
     sessionStorage.removeItem('token');
-    window.location = "/"
+    displayMsg('Logged out');
+    setTimeout(() => window.location = '/', 2000);
   })
 })

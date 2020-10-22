@@ -28,7 +28,7 @@ const getEntries = async (date) => {
     }
 
   }).catch((err) => {
-    document.getElementById('date').textContent = 'No entry found for ' + date;
+    return displayMsg('No entry found for ' + date);
 })
 }
 
@@ -41,6 +41,6 @@ form.addEventListener('submit', (e) => {
     const str_date = mmddyyToStr(date);
     getEntries(str_date);
   } else {
-    document.getElementById("date").textContent = "invalid date format";
+    return displayMsg('Invalid date format');
   }
 })

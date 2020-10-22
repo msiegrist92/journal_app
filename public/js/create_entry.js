@@ -1,11 +1,5 @@
 const data_els = ['date', "sleep", "diet", "expenses", 'income', 'exercise', 'notes', 'work'];
 
-const ok_msg = document.getElementById('create_ok');
-const alert_msg = document.getElementById('alert_msg');
-
-const hide = document.getElementById('hide_msg');
-
-
 document.getElementById("date").value = formatTommddyy(formatDate(new Date().toString()));
 
 const form = document.querySelector('form');
@@ -19,9 +13,7 @@ form.addEventListener("submit", async (event) => {
   }
 
   if(!verifyFormat(entry.date)){
-    ok_msg.style.display = 'block';
-    window.scrollTo(0, 0);
-    return alert_msg.textContent = 'Invalid date format - use mm/dd/yy'
+    return displayMsg('Invalid date format - use mm/dd/yy');
   } else {
 
 
@@ -57,9 +49,7 @@ form.addEventListener("submit", async (event) => {
     })
 
     if(found === true){
-      ok_msg.style.display = 'block';
-      window.scrollTo(0, 0);
-      return alert_msg.textContent = 'Entry already exists'
+      return displayMsg('Entry already exists');
     } else {
       const data = JSON.stringify(entry);
 
@@ -73,16 +63,9 @@ form.addEventListener("submit", async (event) => {
         },
         body: data
       }).then((data) => {
-        ok_msg.style.display = 'block';
-        alert_msg.textContent = 'Entry created'
-        window.scrollTo(0, 0);
+        return displayMsg('Entry created');
       })
     }
 
   }
-})
-
-hide_msg.addEventListener('click', (e) => {
-  e.preventDefault();
-  ok_msg.style.display = 'none';
 })
