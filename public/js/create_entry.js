@@ -4,6 +4,9 @@ document.getElementById("date").value = formatTommddyy(formatDate(new Date().toS
 
 const form = document.querySelector('form');
 
+loadMostRecent();
+const prev = JSON.parse(sessionStorage.previous);
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   const entry = {};
@@ -30,6 +33,8 @@ form.addEventListener("submit", async (event) => {
 
     let found = false;
 
+
+    //checking database through months === input month for duplicate entry
     await fetch("/entries/months/" + month, {
       credentials: "include",
       mode: "cors",
@@ -50,7 +55,9 @@ form.addEventListener("submit", async (event) => {
 
     if(found === true){
       return displayMsg('Entry already exists');
-    } else {
+    }
+    //if pass all checks - create entry in database
+    else {
       const data = JSON.stringify(entry);
 
       await fetch("/entries", {
@@ -63,7 +70,16 @@ form.addEventListener("submit", async (event) => {
         },
         body: data
       }).then((data) => {
-        return displayMsg('Entry created');
+
+        if(sessionStorage.previous === 'null'){
+          return displayMsg('Welcome! When your newest entry has lower sleep or diet values we will let you know!');
+        }
+
+        //function compareMessage compares values in form to values of most previous Entry
+        else {
+          // return displayMsg(compareMessage());
+          return displayMsg(compareMessage(prev));
+        }
       })
     }
 

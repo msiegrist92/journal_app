@@ -24,6 +24,10 @@ register_form.addEventListener('submit', async (e) => {
     if(response.status === 400){
       return displayMsg('Email already in use');
     }
+    if(response.status === 503){
+      return displayMsg('Internal server error please try again later');
+    }
+
     return response.json()
   }).then((json) => {
     const now = new Date().getTime();

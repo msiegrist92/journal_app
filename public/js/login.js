@@ -23,7 +23,11 @@ form.addEventListener('submit', async (e) => {
   }).then((response) => {
     if (response.status === 500){
       return displayMsg('Incorrect email or password');
-    } else {
+    }
+    if (response.status === 503){
+      return displayMsg('Internal server error please try again later');
+    }
+    else {
       return response.json()
   }
   }).then((json) => {
