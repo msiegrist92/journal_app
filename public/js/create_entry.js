@@ -15,6 +15,7 @@ form.addEventListener("submit", async (event) => {
     entry[el] = val;
   }
 
+
   if(!verifyFormat(entry.date)){
     return displayMsg('Invalid date format - use mm/dd/yy');
   } else {

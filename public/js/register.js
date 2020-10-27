@@ -30,10 +30,6 @@ register_form.addEventListener('submit', async (e) => {
 
     return response.json()
   }).then((json) => {
-    const now = new Date().getTime();
-    let to_expire = now + 1800000;
-    to_expire = new Date(to_expire);
-    to_expire = to_expire.toGMTString();
     document.cookie = 'token=' + json.token.token;
     sessionStorage.setItem('token', json.token.token);
     displayMsg('Account created');

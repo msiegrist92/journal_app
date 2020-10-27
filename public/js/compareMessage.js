@@ -1,5 +1,6 @@
 const compareMessage = (prev) => {
 
+
   const form_s = document.getElementById('sleep').value;
   const form_d = document.getElementById('diet').value;
 
@@ -21,7 +22,15 @@ const compareMessage = (prev) => {
   }
 
   if((form_d >= prev_d && form_s >= prev_s) ||
-      (form_d == prev_d && form_s == prev_s)){
+      (form_d === prev_d && form_s === prev_s)){
         return "You're on the right track - keep it up!"
       }
+
+    else {
+      return "Entry created"
+    }
+
+      // else {
+      //   return "Entry created"
+      // }
 }
