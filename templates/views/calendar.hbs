@@ -14,7 +14,9 @@
 <body>
   {{>in_header}}
   <div id="calendar">
+    <img class="nav_arrow" id="back_arrow" src="../images/edit_arrow_4.png">
     <h1 id="month">{{month}}</h1>
+    <img class="nav_arrow" id="forward_arrow" src="../images/edit_arrow_4.png">
     <h3 id='inc_exp'></h3>
   </div>
     <div id="days_cont">
@@ -36,7 +38,7 @@
       <div class="day">{{16}}</div>
       <div class="day">{{17}}</div>
       <div class="day">{{18}}</div>
-      <div class="day">{{19}}</div>
+      <div class="day">{{19s}}</div>
       <div class="day">{{20}}</div>
       <div class="day">{{21}}</div>
       <div class="day">{{22}}</div>
@@ -59,6 +61,7 @@
   <script src="../js/months_objs.js" var months; var days;></script>
   <script src="../js/date_regex.js" var getMonth; var getYear; getDate; var days_abbr;></script>
   <script src="../js/calendar.js"></script>
+  <script src='../js/calendar_nav.js'></script>
 
 </body>
 </html>
