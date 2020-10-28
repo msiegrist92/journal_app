@@ -1,6 +1,8 @@
 const express = require('express');
 const calendar = require('../utils/calendar.js');
 const me = require('../utils/me.js');
+const link = require('../utils/currentCalLink.js');
+
 const router = new express.Router();
 const app = express();
 
@@ -8,7 +10,7 @@ const in_links = {
   option_1: "Create",
   link_1: "/create",
   option_2: "Calendar",
-  link_2: "/calendar",
+  link_2: "",
   option_3: "Recents",
   link_3: "/recent",
   option_4: "Search",
@@ -28,25 +30,28 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/search', async (req, res) => {
+  in_links.link_2 = link.currentCalLink();
   await res.render('search', in_links)
 })
 
 router.get('/create', async (req, res) => {
+  in_links.link_2 = link.currentCalLink();
   await res.render('create', in_links)
 })
 
 router.get('/recent', async (req, res) => {
+  in_links.link_2 = link.currentCalLink();
   await res.render('recent', in_links);
 })
 
 router.get('/help', async (req, res) => {
+  in_links.link_2 = link.currentCalLink();
   await res.render('help', in_links);
 })
 
 router.get('/calendar/:month&:year', async (req, res) => {
   const month = req.params.month;
   const year = req.params.year;
-  console.log(month, year)
   let cal = calendar.createCal(month, year);
   await res.render('calendar', cal);
 })
@@ -56,6 +61,7 @@ router.get('/me', async (req, res) => {
 
   const to_render = {};
 
+  //can we create more of to_render in createRender in /me utils
   me.createRender(req.cookies.token, req.hostname).then(async (obj) => {
     to_render.recent = obj.recent;
     to_render.first = obj.first;
@@ -68,17 +74,14 @@ router.get('/me', async (req, res) => {
     to_render.option_5 = "Account"
     to_render.option_6 = 'Logout'
     to_render.link_1 = '/create'
-    to_render.link_2 = '/calendar'
+    to_render.link_2 = link.currentCalLink();
     to_render.link_3 = '/recent'
     to_render.link_4 = '/search'
     to_render.link_5 = '/me'
 
-
     await res.render('me', to_render)
   })
 
-
-  // await res.render('me', to_render)
 })
 
 router.get('/login', async (req, res) => {

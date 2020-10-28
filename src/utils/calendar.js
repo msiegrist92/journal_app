@@ -1,3 +1,4 @@
+const link = require('./currentCalLink.js');
 const months_objs = require('./months_objs.js');
 
 //function which returns an object that will render a calendar for the month
@@ -34,7 +35,7 @@ const createCal = (month, year) => {
   to_render.option_5 = 'Account'
   to_render.option_6 = "Log Out"
   to_render.link_1 = '/create'
-  to_render.link_2 = '/calendar'
+  to_render.link_2 = link.currentCalLink()
   to_render.link_3 = '/recent'
   to_render.link_4 = '/search'
   to_render.link_5 = '/me'
