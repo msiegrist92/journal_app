@@ -43,8 +43,11 @@ router.get('/help', async (req, res) => {
   await res.render('help', in_links);
 })
 
-router.get('/calendar', async (req, res) => {
-  let cal = calendar.createCal();
+router.get('/calendar/:month&:year', async (req, res) => {
+  const month = req.params.month;
+  const year = req.params.year;
+  console.log(month, year)
+  let cal = calendar.createCal(month, year);
   await res.render('calendar', cal);
 })
 

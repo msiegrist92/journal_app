@@ -1,7 +1,5 @@
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
-const month = months[today.getMonth()].abbr;
-document.getElementById('month').textContent = months[today.getMonth()].name;
 
 const fillFirstWeek = () => {
   let first_day = document.querySelector('.day').textContent.split('\n')[1]
@@ -77,13 +75,13 @@ const displayMonthFinances = (exp, inc) => {
 }
 
 
-
 const showEntriesMade = (today) => {
 
   let today_str = today.toString();
   let cal_month = getMonth(today_str);
   let cal_year = getYear(today_str);
 
+  //use appropriate array method here
   getEntries(cal_month).then(response => {
     let matches = [];
     for (entry of response){
@@ -105,4 +103,6 @@ const showEntriesMade = (today) => {
 
 fillFirstWeek();
 showEntriesMade(today);
+//highlight today will not run without an active database connection
+//active database connection requires a valid token
 highlightToday(today);
