@@ -72,6 +72,7 @@ form.addEventListener("submit", async (event) => {
         body: data
       }).then((data) => {
 
+
         if(sessionStorage.previous === 'null'){
           return displayMsg('Welcome! When your newest entry has lower sleep or diet values we will let you know!');
         }

@@ -1,20 +1,5 @@
-const days_list = document.querySelectorAll('.day');
-const today = new Date();
-
-const fillFirstWeek = () => {
-  let first_day = document.querySelector('.day').textContent.split('\n')[1]
-  let to_fill = days_abbr.indexOf(first_day);
-  let parent_element = document.getElementById('days_cont');
-  for(let i = 0; i < to_fill; i++){
-    parent_element.prepend(document.createElement('div'));
-  }
-}
-
-const highlightToday = (today) => {
-  let today_element = days_list[(today.getDate() - 1)];
-  today_element.classList.toggle('today');
-}
-
+//make sure month_name is the current month of URL
+//will need to add year to this API router
 const getEntries = (month_name) => {
   if(!sessionStorage.token){
     return displayMsg("Session expired please log in");
@@ -74,18 +59,25 @@ const displayMonthFinances = (exp, inc) => {
   el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
 }
 
+const fillFirstWeek = () => {
+  let first_day = document.querySelector('.day').textContent.split('\n')[1]
+  let to_fill = days_abbr.indexOf(first_day);
+  let parent_element = document.getElementById('days_cont');
+  for(let i = 0; i < to_fill; i++){
+    parent_element.prepend(document.createElement('div'));
+  }
+}
 
-const showEntriesMade = (today) => {
 
-  let today_str = today.toString();
-  let cal_month = getMonth(today_str);
-  let cal_year = getYear(today_str);
+const showEntriesMade = (month, year) => {
+  console.log(month, year)
 
   //use appropriate array method here
-  getEntries(cal_month).then(response => {
+  //cal_month should be string month of current url
+  getEntries(month).then(response => {
     let matches = [];
     for (entry of response){
-      if(isInYear(entry, cal_year)){
+      if(isInYear(entry, year)){
         matches.push(entry);
       }
     }
@@ -101,8 +93,30 @@ const showEntriesMade = (today) => {
   })
 }
 
+const highlightToday = (today) => {
+  let today_element = days_list[(today.getDate() - 1)];
+  today_element.classList.toggle('today');
+}
+
+const days_list = document.querySelectorAll('.day');
+const today = new Date();
+console.log(today.getMonth());
+
+const month = window.location.href.match(monthURL);
+const year = window.location.href.match(yearURL)[0];
+
+const selected_month = months[month].abbr;
+
 fillFirstWeek();
-showEntriesMade(today);
+
+//show entries made is passed a Date().toString()
+showEntriesMade(selected_month, year);
+
 //highlight today will not run without an active database connection
 //active database connection requires a valid token
-highlightToday(today);
+
+//if month of today's date is not equal to selected_month do not run this function
+
+if(today.getMonth() == month){
+  highlightToday(today);
+}
