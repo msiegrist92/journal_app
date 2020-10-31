@@ -11,6 +11,7 @@ button {
 body {
   margin: 0;
   width: 100%;
+  max-width: 2000px;
 }
 
 h1, h2, h3 {

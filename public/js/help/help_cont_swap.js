@@ -13,7 +13,6 @@ const reorderElements = (container) => {
 
 }
 
-//function which sets inline styles for elements when swapping image
 
 const imgFirstStyle = (img, p) => {
   //if statements for media queries
@@ -32,7 +31,6 @@ const imgFirstStyle = (img, p) => {
 }
 
 
-//for loop over containers goes here
 for(let i = 0; i < containers.length; i++){
   if(i % 2 === 0){
     reorderElements(containers[i]);

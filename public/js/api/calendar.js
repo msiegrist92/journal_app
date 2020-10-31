@@ -1,4 +1,3 @@
-//make sure month_name is the current month of URL
 //will need to add year to this API router
 const getEntries = (month_name) => {
   if(!sessionStorage.token){
@@ -70,7 +69,6 @@ const fillFirstWeek = () => {
 
 
 const showEntriesMade = (month, year) => {
-  console.log(month, year)
 
   //use appropriate array method here
   //cal_month should be string month of current url
@@ -100,7 +98,6 @@ const highlightToday = (today) => {
 
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
-console.log(today.getMonth());
 
 const month = window.location.href.match(monthURL);
 const year = window.location.href.match(yearURL)[0];
