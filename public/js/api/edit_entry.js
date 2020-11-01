@@ -1,6 +1,8 @@
 // left: 12.5%;
 // right: 12.5%;
 
+//MOVE SHOWHIDE LOGIC OF EDIT ENTRY TO SEPARATE FILE IN SHOWHIDE FOLDER
+
 const edit_button = document.getElementById("edit");
 const edit_cont = document.getElementById('edit_cont');
 const back_arrow = document.getElementById('back_arrow');
@@ -88,8 +90,4 @@ back_arrow.addEventListener('click', async (e) => {
   await setTimeout(() => {
     edit_cont.style.display = 'none';
   }, 1200);
-})
-
-hide_msg.addEventListener('click', (e) => {
-  edit_msg.style.display = 'none';
 })

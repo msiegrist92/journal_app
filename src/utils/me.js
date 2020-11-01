@@ -96,7 +96,7 @@ const createRender = (token, hostname) => {
     json: true
   }).then((response) => {
       const to_render = {};
-    const stats = getUserStats(getSortedDates(response.entries),            response.entries);
+    const stats = getUserStats(getSortedDates(response.entries), response.entries);
     to_render.recent = stats.recent;
     to_render.first = stats.first;
     to_render.consistency = stats.consistency + '%';
