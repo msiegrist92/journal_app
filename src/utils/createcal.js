@@ -40,6 +40,7 @@ const createCal = (month, year) => {
   to_render.link_4 = '/search'
   to_render.link_5 = '/me'
   to_render.month = months_objs.months[month].name;
+  to_render.year = year;
 
   return to_render;
 }

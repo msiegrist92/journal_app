@@ -1,5 +1,5 @@
 const express = require('express');
-const calendar = require('../utils/calendar.js');
+const createcal = require('../utils/createcal.js');
 const me = require('../utils/me.js');
 const link = require('../utils/currentCalLink.js');
 
@@ -52,7 +52,7 @@ router.get('/help', async (req, res) => {
 router.get('/calendar/:month&:year', async (req, res) => {
   const month = req.params.month;
   const year = req.params.year;
-  let cal = calendar.createCal(month, year);
+  let cal = createcal.createCal(month, year);
   await res.render('calendar', cal);
 })
 

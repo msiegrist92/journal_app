@@ -105,6 +105,10 @@ em {
     width: 30px;
     height: 28px;
   }
+
+  #month {
+    font-size: 1.75rem;
+  }
 }
 
 @media only screen and (max-width: 350px){

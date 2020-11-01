@@ -1,6 +1,6 @@
-//function which returns correct link for current month
+//function which returns correct link for current month to be used in partials
 ///calendar/9&2020
-//return string value and in router set in_links.link_2 : determineLink()
+
 
 const currentCalLink = () => {
   const today = new Date();
