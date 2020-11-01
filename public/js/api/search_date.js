@@ -12,24 +12,18 @@ const getEntries = async (date) => {
   }
 
   let uri_date = encodeURI(date)
-  await fetch('/entries/' + uri_date, {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-      "Authorization": sessionStorage.token
-    },
-  }).then((data) => {
-    return data.json()
-  }).then((json) => {
 
-
-    for(el of data_els){
-      document.getElementById(el).textContent = json[0][el];
+  await entry_config.get('/' + uri_date).then((res) => {
+    if(res.data[0] === undefined){
+      return displayMsg("No entry found for " + date);
     }
-
+    for(let el of data_els){
+      document.getElementById(el).textContent = res.data[0][el];
+    }
   }).catch((err) => {
-    return displayMsg('No entry found for ' + date);
-})
+    console.log(err)
+    return displayMsg('Internal server error please try again later');
+  })
 }
 
 const form = document.querySelector('form');

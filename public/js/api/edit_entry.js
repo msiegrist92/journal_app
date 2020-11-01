@@ -64,23 +64,17 @@ edit_cont.addEventListener('submit', async (e) => {
     return displayMsg("Session expired please log in");
   }
 
-  await fetch("/entries/" + URI_date, {
-    credentials: "include",
-    mode: "cors",
-    method: 'PATCH',
-    headers: {
-      "Content-Type": 'application/json',
-      "Authorization": sessionStorage.token
-    },
-    body: data
-}).then(async (response) => {
-  displayMsg('Edit successful')
-  edit_cont.style.right = '-3000px';
-  edit_cont.style.left = '1000px';
-  await setTimeout(() => {
-    edit_cont.style.display = 'none';
-  }, 1200);
-})
+  await entry_config.patch('/' + URI_date, data).then(async (res) => {
+    displayMsg("Edit successful");
+    edit_cont.style.right = '-3000px';
+      edit_cont.style.left = '1000px';
+      await setTimeout(() => {
+        edit_cont.style.display = 'none';
+      }, 1200);
+  }).catch((err) => {
+    displayMsg(err)
+  })
+
 })
 
 back_arrow.addEventListener('click', async (e) => {
