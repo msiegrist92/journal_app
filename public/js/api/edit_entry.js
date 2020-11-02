@@ -66,7 +66,7 @@ edit_cont.addEventListener('submit', async (e) => {
 
   await entry_config.patch('/' + URI_date, data).then(async (res) => {
     displayMsg("Edit successful");
-    edit_cont.style.right = '-3000px';
+      edit_cont.style.right = '-3000px';
       edit_cont.style.left = '1000px';
       await setTimeout(() => {
         edit_cont.style.display = 'none';
