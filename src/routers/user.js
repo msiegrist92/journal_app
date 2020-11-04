@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const express = require('express');
 const User = require('../db/schemas/user.js');
 const Tokens = require('../db/schemas/tokens.js');
-// const Entry = require('')
 const router = new express.Router();
 const bodyParser = require('body-parser');
 const json_parser = bodyParser.json();
@@ -69,14 +68,14 @@ router.get('/user/me', auth, async (req, res) => {
 router.patch('/user/me', json_parser, auth, async (req, res) => {
   const allowed = ['old_pw', 'new_pw'];
 
-  //hash body.old_pw and compare to req.user.pass in db
-  //if not match res.send(400).('invalid password')
-  if(!bcrypt.compareSync(req.body.old_pw, req.user.password)){
+  const data = JSON.parse(req.body.data);
+
+  if(!bcrypt.compareSync(data.old_pw, req.user.password)){
     return res.status(401).send();
   }
 
   try {
-    req.user.password = req.body.new_pw;
+    req.user.password = data.new_pw;
     await req.user.save();
 
     res.status(200).send('password changed');

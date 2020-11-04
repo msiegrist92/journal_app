@@ -2,20 +2,19 @@ const logout = document.getElementById('logout');
 
 logout.addEventListener('click', async (e) => {
   e.preventDefault();
+
   if(!sessionStorage.token){
     return window.location = '/';
   }
-  await fetch('/user/logout', {
-    credentials: "include",
-    mode: "cors",
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": sessionStorage.token
-    }
-  }).then((response) => {
+
+  await user_auth_config.post('/logout').then((res) => {
     sessionStorage.removeItem('token');
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    sessionStorage.removeItem('previous');
     displayMsg('Logged out');
-    setTimeout(() => window.location = '/', 2000);
+    setTimeout(() => window.location = '/', 1800);
+  }).catch((err) => {
+    return displayMsg(err.response.data);
   })
+
 })

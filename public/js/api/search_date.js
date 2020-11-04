@@ -21,7 +21,6 @@ const getEntries = async (date) => {
       document.getElementById(el).textContent = res.data[0][el];
     }
   }).catch((err) => {
-    console.log(err)
     return displayMsg('Internal server error please try again later');
   })
 }

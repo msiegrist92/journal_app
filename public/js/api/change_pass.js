@@ -29,26 +29,12 @@ form.addEventListener('submit', async (e) => {
     new_pw
   })
 
-  const response = await fetch('/user/me', {
-    credentials: "include",
-    mode: "cors",
-    method: 'PATCH',
-    headers : {
-      'Content-Type': 'application/json',
-      "Authorization": sessionStorage.token
-    },
-    body: passwords
-
-  }).then((response) => {
-    if(response.status === 401){
-      return displayMsg('Invalid password')
-    }
-    if(response.status === 200){
-      return displayMsg('Password changed')
-    }
-    if(response.status === 500){
-      return displayMsg('Internal servor error try again later')
-    }
+  await user_auth_config.patch('me', {
+    data: passwords
+  }).then((res) => {
+    return displayMsg('Password changed')
+  }).catch((err) => {
+    return displayMsg(err);
   })
 
 

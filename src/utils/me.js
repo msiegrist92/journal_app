@@ -1,9 +1,6 @@
-//dates need to be sorted by date in case user has created back log of populate_entries
-//if user wants to create an entry for 4 years ago to tank their consistency or whatever than that is just what will happen
-
+const axios = require('axios');
 const date_regex = require('./date_regex.js');
 const months_objs = require('./months_objs.js');
-const rp = require('request-promise');
 
 const getSortedDates = entries => {
   const dates = [];
@@ -82,27 +79,45 @@ const getUserStats = (dates, entries) => {
 
 }
 
-const createRender = (token, hostname) => {
+//create render retrieves user data upon request and sends object to hbs for rendering
+const createRender = async (token, hostname) => {
 
   const port = process.env.PORT || 2800;
-  const uri = 'http://' + hostname + '/user/me';
 
-  return rp({
-    uri,
+  //on dev server add port after hostname
+  //on production remove : and  port
+  //this needs to be changed to be a string literal
+  //alternatively - if (hostname === regex){use string literal format x}
+  const uri = 'http://' + hostname + ':' + port +  '/user';
+
+  const user_auth_config = axios.create({
+    baseURL: uri,
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': "application/json",
       "Authorization" : token
-    },
-    json: true
-  }).then((response) => {
-      const to_render = {};
-    const stats = getUserStats(getSortedDates(response.entries), response.entries);
-    to_render.recent = stats.recent;
-    to_render.first = stats.first;
-    to_render.consistency = stats.consistency + '%';
-    to_render.email = response.user.email;
-    return to_render;
+    }
   })
+
+  //refactor to axios
+  return await user_auth_config.get('/me').then((res) => {
+
+    const stats = getUserStats(getSortedDates(res.data.entries), res.data.entries);
+    let { recent, first, consistency } = stats;
+    consistency += '%'
+
+    const to_render = {
+      recent,
+      first,
+      consistency,
+      email: res.data.user.email
+    }
+
+    return to_render;
+
+  }).catch((err) => {
+    console.log(err);
+  })
+
 }
 
 module.exports = {

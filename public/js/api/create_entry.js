@@ -5,10 +5,11 @@ document.getElementById("date").value = formatTommddyy(formatDate(new Date().toS
 const form = document.querySelector('form');
 
 loadMostRecent();
-const prev = JSON.parse(sessionStorage.previous);
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  const prev = JSON.parse(sessionStorage.previous);
 
   const entry = {};
   for(el of data_els){

@@ -12,27 +12,16 @@ register_form.addEventListener('submit', async (e) => {
     password: document.getElementsByName('password')[0].value
   })
 
-  await fetch('/user', {
-    credentials: "include",
-    mode: "cors",
-    method: 'POST',
-    headers: {
-      'Content-Type': "application/json"
-    },
-    body: data
-  }).then((response) => {
+  await user_config.post('', data).then(({data} = res) => {
+    document.cookie = 'token=' + data.token.token;
+    sessionStorage.setItem('token', data.token.token);
+    window.location = '/help'
+
+  }).catch(({response} = err) => {
     if(response.status === 400){
       return displayMsg('Email already in use');
-    }
-    if(response.status === 503){
+    } else {
       return displayMsg('Internal server error please try again later');
     }
-
-    return response.json()
-  }).then((json) => {
-    document.cookie = 'token=' + json.token.token;
-    sessionStorage.setItem('token', json.token.token);
-    displayMsg('Account created');
-    setTimeout(() => window.location = "/help", 2500)
   })
 })

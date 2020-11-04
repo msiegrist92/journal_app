@@ -11,28 +11,18 @@ form.addEventListener('submit', async (e) => {
     password: document.getElementsByName('password')[0].value
   })
 
+  user_config.post('/login', data).then(({data} = res) => {
 
-  await fetch('/user/login', {
-    credentials: "include",
-    mode: "cors",
-    method: 'POST',
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body : data
-  }).then((response) => {
-    if (response.status === 500){
-      return displayMsg('Incorrect email or password');
+    document.cookie = 'token=' + data.token.token;
+    sessionStorage.setItem('token', data.token.token);
+    window.location = '/create';
+
+  }).catch((err) => {
+    if(err.response.status === 500){
+      return displayMsg('Invalid email or password');
+    } else {
+      return displayMsg(err);
     }
-    if (response.status === 503){
-      return displayMsg('Internal server error please try again later');
-    }
-    else {
-      return response.json()
-  }
-  }).then((json) => {
-    document.cookie = 'token=' + json.token.token;
-    sessionStorage.setItem('token', json.token.token);
-    window.location = "/create"
   })
+
 })
