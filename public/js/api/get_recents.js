@@ -13,19 +13,12 @@ const getRecents = (amount) => {
     return displayMsg("Session expired please log in");
   }
 
-  return fetch('/entries/recents/' + amount, {
-    credentials: "include",
-    mode: "cors",
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": sessionStorage.token
-    }
+  return entry_config.get('/recents/' + amount).then((res) => {
+    return res.data;
+  }).catch((err) => {
+    return displayMsg(err);
   })
-  .then((response) => {
-    return response.json();
-  }).then((entries) => entries
-)}
+}
 
 const displayDates = entries => {
   for (let i=0; i < entries.length; i++){
@@ -127,32 +120,6 @@ const establishDefaultState = (amount) => {
     changeNotes(response, 'gen_btn', 0);
     sessionStorage.setItem('entries', JSON.stringify(response));
   })
-}
-
-const setButtonWidth = length => {
-  if(length === 4){
-    for(let i = 0; i < date_btns.length; i++){
-      let element = document.getElementById(date_btns[i]);
-      element.style.width = '85%';
-      }
-    }
-    else if (length === 5) {
-      for(let i = 0; i < date_btns.length; i++){
-        let element = document.getElementById(date_btns[i]);
-        element.style.width = '95%';
-      }
-    }
-
-    else {
-      for(let i = 0; i < date_btns.length; i++){
-        let element = document.getElementById(date_btns[i]);
-        element.style.width = '75%';
-      }
-    }
-    if(length === 5 && mobile_recents.matches){
-      document.getElementById('btn_5').style.width = '40%';
-    }
-
 }
 
 for (let i = 0; i < note_btns.length; i++){

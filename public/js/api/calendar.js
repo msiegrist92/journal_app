@@ -1,22 +1,18 @@
-//will need to add year to this API router
-const getEntries = (month_name) => {
+//will need to add year to this API router to enhance speed
+//if application has three years of entries this endpoint will pull january entries
+//for all three years - this is inefficient with larger data sets
+const getEntries = async (month_name) => {
+
   if(!sessionStorage.token){
     return displayMsg("Session expired please log in");
   }
 
-  return fetch('/entries/months/' + month_name, {
-    credentials: "include",
-    mode: "cors",
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": sessionStorage.token
-    }
+  return await entry_config.get('/months/' + month_name).then((res) => {
+    return res.data;
+  }).catch((err) => {
+    return displayMsg(err)
   })
-  .then((response) => {
-    return response.json();
-  }).then((entries) => entries
-)}
+}
 
 const isInYear = (entry, year) => {
   if (getYear(entry.date) === year){
@@ -25,7 +21,6 @@ const isInYear = (entry, year) => {
     return false;
   }
 }
-
 
 //date is the element corresponding to the day of the entry
 const addEntryData = (date, match) => {
@@ -58,6 +53,7 @@ const displayMonthFinances = (exp, inc) => {
   el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
 }
 
+//renders first week of calendar to start on the correct day and have correct length
 const fillFirstWeek = () => {
   let first_day = document.querySelector('.day').textContent.split('\n')[1]
   let to_fill = days_abbr.indexOf(first_day);
@@ -73,12 +69,12 @@ const showEntriesMade = (month, year) => {
   //use appropriate array method here
   //cal_month should be string month of current url
   getEntries(month).then(response => {
-    let matches = [];
-    for (entry of response){
+
+    let matches = response.map((entry) => {
       if(isInYear(entry, year)){
-        matches.push(entry);
+        return entry;
       }
-    }
+    });
 
     let total_inc = totalFinances(matches, 'income')
     let total_exp = totalFinances(matches, 'expenses');
@@ -109,11 +105,7 @@ fillFirstWeek();
 //show entries made is passed a Date().toString()
 showEntriesMade(selected_month, year);
 
-//highlight today will not run without an active database connection
-//active database connection requires a valid token
-
-//if month of today's date is not equal to selected_month do not run this function
-
-if(today.getMonth() == month){
+//if user is not looking at the current month do not highlight a day
+if (today.getMonth() == month){
   highlightToday(today);
 }
