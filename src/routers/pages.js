@@ -20,6 +20,10 @@ const in_links = {
   option_6: 'Logout'
 }
 
+router.get('*', async (req, res) => {
+  await res.render('Migrating database - down for maintenance');
+})
+
 router.get('/', async (req, res) => {
   await res.render('index', {
     option_1: "Log In",

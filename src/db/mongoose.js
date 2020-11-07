@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://127.0.0.1:27017/journal-app', {
+mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useUnifiedTopology: true,
@@ -8,4 +8,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/journal-app', {
 })
 
 //'mongodb://127.0.0.1:27017/journal-app'
-//process.env.MONGODB_URI
+//process.env.DB_URI
+//atlas cluster connection str
+//mongodb+srv://heroku_x07dts06:<password>@cluster-x07dts06.rv6xw.mongodb.net/heroku_x07dts06?retryWrites=true&w=majority
