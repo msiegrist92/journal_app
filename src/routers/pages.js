@@ -21,7 +21,7 @@ const in_links = {
 }
 
 router.get('*', async (req, res) => {
-  await res.render('Migrating database - down for maintenance');
+  await res.send('Migrating database - down for maintenance');
 })
 
 router.get('/', async (req, res) => {
