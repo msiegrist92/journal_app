@@ -20,10 +20,10 @@ const in_links = {
   option_6: 'Logout'
 }
 
-//catch all route to put site down for maintenance
-// router.get('*', async (req, res) => {
-//   await res.send('Migrating database - down for maintenance');
-// })
+catch all route to put site down for maintenance
+router.get('*', async (req, res) => {
+  await res.send('Migrating database - down for maintenance');
+})
 
 router.get('/', async (req, res) => {
   await res.render('index', {
