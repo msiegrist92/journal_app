@@ -55,8 +55,9 @@ router.get('/help', async (req, res) => {
 })
 
 router.get('/calendar/:month&:year', async (req, res) => {
-  const month = req.params.month;
+  const month = req.params.month;inc
   const year = req.params.year;
+  console.log('router', month, year);
   let cal = createcal.createCal(month, year);
   await res.render('calendar', cal);
 })

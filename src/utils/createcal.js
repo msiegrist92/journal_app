@@ -7,6 +7,8 @@ const months_objs = require('./months_objs.js');
 //month is zero-indexed month
 const createCal = (month, year) => {
 
+  console.log('create cal', month, year);
+
   const today = new Date();
   //number of days in month
   const month_length = months_objs.months[month].days;
