@@ -68,6 +68,7 @@ router.get('/entries/months/:month', auth, async (req, res) => {
   let month = req.params.month;
   try {
     const entries = await pop.getByMonth(req.user._id, month);
+    console.log(entries);
     res.status(200).send(entries);
   } catch (e) {
     res.status(500).send(e);
