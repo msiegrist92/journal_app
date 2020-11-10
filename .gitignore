@@ -1,3 +1,4 @@
 node_modules/
 todo.txt
 localhost_db.txt
+.env
