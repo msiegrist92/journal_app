@@ -88,7 +88,7 @@ const createRender = async (token, hostname) => {
   //on production remove : and  port
   //this needs to be changed to be a string literal
   //alternatively - if (hostname === regex){use string literal format x}
-  const uri = 'http://' + hostname + ':' + port +  '/user';
+  const uri = 'http://' + hostname + '/user';
 
   const user_auth_config = axios.create({
     baseURL: uri,
