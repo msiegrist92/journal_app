@@ -1,6 +1,7 @@
 //will need to add year to this API router to enhance speed
 //if application has three years of entries this endpoint will pull january entries
 //for all three years - this is inefficient with larger data sets
+
 const getEntries = async (month_name) => {
 
   if(!sessionStorage.token){
@@ -95,14 +96,16 @@ const highlightToday = (today) => {
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
 
-const month = window.location.href.match(monthURL);
+const month = window.location.href.match(monthURL)[0];
 const year = window.location.href.match(yearURL)[0];
+
 
 const selected_month = months[month].abbr;
 
 fillFirstWeek();
 
 //show entries made is passed a Date().toString()
+//this never gets ran on ios safari
 showEntriesMade(selected_month, year);
 
 //if user is not looking at the current month do not highlight a day
