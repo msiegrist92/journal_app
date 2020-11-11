@@ -96,26 +96,24 @@ const highlightToday = (today) => {
   today_element.classList.toggle('today');
 }
 
-// const days_list = document.querySelectorAll('.day');
-// const today = new Date();
-//
-// const month = location.href.match(monthURL)[0];
-// const year = location.href.match(yearURL)[0];
-//
-//
-// const selected_month = months[month].abbr;
-//
-// console.log(month, year, selected_month);
-//
-// fillFirstWeek();
-//
-// //show entries made is passed a Date().toString()
-// //this never gets ran on ios safari
-// showEntriesMade(selected_month, year);
-//
-// //if user is not looking at the current month do not highlight a day
-// if (today.getMonth() == month){
-//   highlightToday(today);
-// }
+const days_list = document.querySelectorAll('.day');
+const today = new Date();
 
-document.getElementById('inc_exp').textContent = 'file loaded';
+const month = location.href.match(monthURL)[0];
+const year = location.href.match(yearURL)[0];
+
+
+const selected_month = months[month].abbr;
+
+console.log(month, year, selected_month);
+
+fillFirstWeek();
+
+//show entries made is passed a Date().toString()
+//this never gets ran on ios safari
+showEntriesMade(selected_month, year);
+
+//if user is not looking at the current month do not highlight a day
+if (today.getMonth() == month){
+  highlightToday(today);
+}
