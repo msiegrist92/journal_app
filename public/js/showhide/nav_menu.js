@@ -30,3 +30,5 @@ for (let button of buttons){
     nav_drop();
   })
 }
+
+console.log('loaded nav drop');

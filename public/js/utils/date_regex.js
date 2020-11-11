@@ -55,5 +55,3 @@ const formatTommddyy = str_date => {
   }
   return `${month_index}/${date}/${year}`
 }
-
-console.log('loaded date_regex');
