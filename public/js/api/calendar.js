@@ -68,34 +68,34 @@ const fillFirstWeek = () => {
 }
 
 
-// const showEntriesMade = (month, year) => {
-//
-//   //use appropriate array method here
-//   //cal_month should be string month of current url
-//   getEntries(month).then(response => {
-//
-//     let matches = response.map((entry) => {
-//       if(isInYear(entry, year)){
-//         return entry;
-//       }
-//     });
-//
-//     let total_inc = totalFinances(matches, 'income')
-//     let total_exp = totalFinances(matches, 'expenses');
-//     displayMonthFinances(total_exp, total_inc);
-//
-//     for (match of matches){
-//       let date = getDate(match.date);
-//       addEntryData(days_list[date - 1], match)
-//     }
-//   })
-// }
-//
-// const highlightToday = (today) => {
-//   let today_element = days_list[(today.getDate() - 1)];
-//   today_element.classList.toggle('today');
-// }
-//
+const showEntriesMade = (month, year) => {
+
+  //use appropriate array method here
+  //cal_month should be string month of current url
+  getEntries(month).then(response => {
+
+    let matches = response.map((entry) => {
+      if(isInYear(entry, year)){
+        return entry;
+      }
+    });
+
+    let total_inc = totalFinances(matches, 'income')
+    let total_exp = totalFinances(matches, 'expenses');
+    displayMonthFinances(total_exp, total_inc);
+
+    for (match of matches){
+      let date = getDate(match.date);
+      addEntryData(days_list[date - 1], match)
+    }
+  })
+}
+
+const highlightToday = (today) => {
+  let today_element = days_list[(today.getDate() - 1)];
+  today_element.classList.toggle('today');
+}
+
 // const days_list = document.querySelectorAll('.day');
 // const today = new Date();
 //
