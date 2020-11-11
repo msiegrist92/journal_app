@@ -99,8 +99,8 @@ const highlightToday = (today) => {
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
 
-const month = location.href.match(monthURL)[0];
-const year = location.href.match(yearURL)[0];
+const month = window.location.href.match(monthURL)[0];
+const year = window.location.href.match(yearURL)[0];
 //
 //
 // const selected_month = months[month].abbr;
