@@ -4,13 +4,13 @@
 
 console.log('top of calendar.js');
 
-const getEntries = async (month_name) => {
+const getEntries = (month_name) => {
 
   if(!sessionStorage.token){
     return displayMsg("Session expired please log in");
   }
 
-  return await entry_config.get('/months/' + month_name).then((res) => {
+  return entry_config.get('/months/' + month_name).then((res) => {
     return res.data;
   }).catch((err) => {
     return displayMsg(err)
