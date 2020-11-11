@@ -10,7 +10,8 @@ const getEntries = (month_name) => {
     return displayMsg("Session expired please log in");
   }
 
-  return entry_config.get('/months/' + month_name + '/').then((res) => {
+  return entry_config.get('/months/' + month_name + '?nocache=' + new Date().getTime())
+  .then((res) => {
     return res.data;
   }).catch((err) => {
     return displayMsg(err)
