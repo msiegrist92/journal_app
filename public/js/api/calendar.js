@@ -101,10 +101,6 @@ const today = new Date();
 
 const href = window.location.href;
 
-
-const monthREG = /[0-9][0-9]?/g;
-const yearREG = /[0-9][0-9][0-9][0-9]/g;
-
 const month = href.match(monthREG)[0];
 const year = href.match(yearREG)[0];
 
