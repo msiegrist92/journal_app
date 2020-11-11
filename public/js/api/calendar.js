@@ -25,38 +25,38 @@ const isInYear = (entry, year) => {
     return false;
   }
 }
-//
-// //date is the element corresponding to the day of the entry
-// const addEntryData = (date, match) => {
-//   if(match.sleep < 7 || match.diet < 7){
-//     date.style.backgroundColor = 'rgba(218, 223, 78, 0.32)';
-//   } else {
-//     date.style.backgroundColor = 'rgba(33, 186, 43, 0.3)';
-//   }
-//   let exp = document.createElement('em');
-//   date.appendChild(exp);
-//   exp.textContent += '\n' + 'Expenses ' + match.expenses;
-//
-//   if(match.income > 0){
-//     let inc = document.createElement('em');
-//     date.appendChild(inc);
-//     inc.textContent += '\n' + 'Income ' + match.income;
-//   }
-// }
-//
-// const totalFinances = (matches, value) => {
-//   let val = 0;
-//   for (match of matches){
-//     val += match[value]
-//   }
-//   return val;
-// }
-//
-// const displayMonthFinances = (exp, inc) => {
-//   let el = document.getElementById("inc_exp");
-//   el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
-// }
-//
+
+//date is the element corresponding to the day of the entry
+const addEntryData = (date, match) => {
+  if(match.sleep < 7 || match.diet < 7){
+    date.style.backgroundColor = 'rgba(218, 223, 78, 0.32)';
+  } else {
+    date.style.backgroundColor = 'rgba(33, 186, 43, 0.3)';
+  }
+  let exp = document.createElement('em');
+  date.appendChild(exp);
+  exp.textContent += '\n' + 'Expenses ' + match.expenses;
+
+  if(match.income > 0){
+    let inc = document.createElement('em');
+    date.appendChild(inc);
+    inc.textContent += '\n' + 'Income ' + match.income;
+  }
+}
+
+const totalFinances = (matches, value) => {
+  let val = 0;
+  for (match of matches){
+    val += match[value]
+  }
+  return val;
+}
+
+const displayMonthFinances = (exp, inc) => {
+  let el = document.getElementById("inc_exp");
+  el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
+}
+
 // //renders first week of calendar to start on the correct day and have correct length
 // const fillFirstWeek = () => {
 //   let first_day = document.querySelector('.day').textContent.split('\n')[1]
