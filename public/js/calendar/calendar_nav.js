@@ -4,11 +4,15 @@ const forward = document.getElementById('forward_arrow');
 const monthURL = /(?<=\/)\d+(?=&)/g;
 const yearURL = /(?<=&)\d{4}/g;
 
+const monthREG = /[0-9][0-9]?/g;
+const yearREG = /[0-9][0-9][0-9][0-9]/g;
+
+
 
 const changeMonth = (direction) => {
   const current_URL = window.location.href;
-  let current_month = parseInt(current_URL.match(monthURL));
-  let current_year = parseInt(current_URL.match(yearURL));
+  let current_month = parseInt(current_URL.match(monthREG));
+  let current_year = parseInt(current_URL.match(yearREG));
 
   if(direction === 'forward'){
     if(current_month === 11){

@@ -107,15 +107,12 @@ const monthREG = /[0-9][0-9]?/g;
 const yearREG = /[0-9][0-9][0-9][0-9]/g;
 
 const month = href.match(monthREG)[0];
-console.log(month);
 const year = href.match(yearREG)[0];
-console.log(year);
 
 
 
 const selected_month = months[month].abbr;
 
-console.log(month, year, selected_month);
 
 fillFirstWeek();
 
@@ -127,5 +124,3 @@ showEntriesMade(selected_month, year);
 if (today.getMonth() == month){
   highlightToday(today);
 }
-
-document.getElementById('inc_exp').textContent = 'page loaded'
