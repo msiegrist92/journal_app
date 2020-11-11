@@ -98,12 +98,16 @@ const highlightToday = (today) => {
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
 
-document.getElementById('inc_exp').textContent = window.location.href;
 
-const month = window.location.pathname.match(monthURL)[0];
-const year = window.location.pathname.match(yearURL)[0];
+const href = window.location.href;
 
-console.log(month, year);
+document.getElementById('inc_exp').textContent = href;
+
+const month = href.match(monthURL)[0];
+console.log(month);
+const year = href.match(yearURL)[0];
+console.log(year);
+
 
 document.getElementById('inc_exp').textContent = 'page loaded'
 //
