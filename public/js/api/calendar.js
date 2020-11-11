@@ -102,6 +102,8 @@ const year = location.href.match(yearURL)[0];
 
 const selected_month = months[month].abbr;
 
+console.log(month, year, selected_month);
+
 fillFirstWeek();
 
 //show entries made is passed a Date().toString()
@@ -112,3 +114,5 @@ showEntriesMade(selected_month, year);
 if (today.getMonth() == month){
   highlightToday(today);
 }
+
+document.getElementById('inc_exp').textContent = 'file loaded';
