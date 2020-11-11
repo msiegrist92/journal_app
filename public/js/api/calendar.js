@@ -2,6 +2,8 @@
 //if application has three years of entries this endpoint will pull january entries
 //for all three years - this is inefficient with larger data sets
 
+console.log('top of calendar.js');
+
 const getEntries = async (month_name) => {
 
   if(!sessionStorage.token){
