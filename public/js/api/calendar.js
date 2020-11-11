@@ -4,19 +4,19 @@
 
 console.log('top of calendar.js');
 
-// const getEntries = (month_name) => {
-//
-//   if(!sessionStorage.token){
-//     return displayMsg("Session expired please log in");
-//   }
-//
-//   return entry_config.get('/months/' + month_name + '?nocache=' + new Date().getTime())
-//   .then((res) => {
-//     return res.data;
-//   }).catch((err) => {
-//     return displayMsg(err)
-//   })
-// }
+const getEntries = (month_name) => {
+
+  if(!sessionStorage.token){
+    return displayMsg("Session expired please log in");
+  }
+
+  return entry_config.get('/months/' + month_name + '?nocache=' + new Date().getTime())
+  .then((res) => {
+    return res.data;
+  }).catch((err) => {
+    return displayMsg(err)
+  })
+}
 //
 // const isInYear = (entry, year) => {
 //   if (getYear(entry.date) === year){
