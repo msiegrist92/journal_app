@@ -1,8 +1,8 @@
 const back = document.getElementById('back_arrow');
 const forward = document.getElementById('forward_arrow');
 
-const monthURL = /(?<=\/)\d+(?=&)/g;
-const yearURL = /(?<=&)\d{4}/g;
+// const monthURL = /(?<=\/)\d+(?=&)/g;
+// const yearURL = /(?<=&)\d{4}/g;
 
 const monthREG = /[0-9][0-9]?/g;
 const yearREG = /[0-9][0-9][0-9][0-9]/g;

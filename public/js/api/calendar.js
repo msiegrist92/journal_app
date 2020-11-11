@@ -101,7 +101,6 @@ const today = new Date();
 
 const href = window.location.href;
 
-document.getElementById('inc_exp').textContent = href;
 
 const monthREG = /[0-9][0-9]?/g;
 const yearREG = /[0-9][0-9][0-9][0-9]/g;
