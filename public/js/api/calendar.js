@@ -103,9 +103,9 @@ const href = window.location.href;
 
 document.getElementById('inc_exp').textContent = href;
 
-const month = href.match(monthURL)[0];
+const month = href.match(monthURL);
 console.log(month);
-const year = href.match(yearURL)[0];
+const year = href.match(yearURL);
 console.log(year);
 
 
