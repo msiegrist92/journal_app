@@ -17,14 +17,14 @@ const getEntries = (month_name) => {
     return displayMsg(err)
   })
 }
-//
-// const isInYear = (entry, year) => {
-//   if (getYear(entry.date) === year){
-//       return true
-//   } else {
-//     return false;
-//   }
-// }
+
+const isInYear = (entry, year) => {
+  if (getYear(entry.date) === year){
+      return true
+  } else {
+    return false;
+  }
+}
 //
 // //date is the element corresponding to the day of the entry
 // const addEntryData = (date, match) => {
