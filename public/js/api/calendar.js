@@ -2,7 +2,6 @@
 //if application has three years of entries this endpoint will pull january entries
 //for all three years - this is inefficient with larger data sets
 
-console.log('top of calendar.js');
 
 const getEntries = (month_name) => {
 
@@ -99,8 +98,12 @@ const highlightToday = (today) => {
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
 
-const month = window.location.href.match(monthURL)[0];
-const year = window.location.href.match(yearURL)[0];
+const month = window.location.pathname.match(monthURL)[0];
+const year = window.location.pathname.match(yearURL)[0];
+
+console.log(month, year);
+
+
 //
 //
 // const selected_month = months[month].abbr;
