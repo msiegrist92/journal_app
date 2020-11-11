@@ -98,6 +98,8 @@ const highlightToday = (today) => {
 const days_list = document.querySelectorAll('.day');
 const today = new Date();
 
+document.getElementById('inc_exp').textContent = 'file loaded';
+
 const month = window.location.pathname.match(monthURL)[0];
 const year = window.location.pathname.match(yearURL)[0];
 
@@ -120,5 +122,3 @@ console.log(month, year);
 // if (today.getMonth() == month){
 //   highlightToday(today);
 // }
-
-document.getElementById('inc_exp').textContent = 'file loaded';
