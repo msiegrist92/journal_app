@@ -57,17 +57,17 @@ const displayMonthFinances = (exp, inc) => {
   el.textContent = `Total Expenses : ${exp}\nTotal Income : ${inc}`;
 }
 
-// //renders first week of calendar to start on the correct day and have correct length
-// const fillFirstWeek = () => {
-//   let first_day = document.querySelector('.day').textContent.split('\n')[1]
-//   let to_fill = days_abbr.indexOf(first_day);
-//   let parent_element = document.getElementById('days_cont');
-//   for(let i = 0; i < to_fill; i++){
-//     parent_element.prepend(document.createElement('div'));
-//   }
-// }
-//
-//
+//renders first week of calendar to start on the correct day and have correct length
+const fillFirstWeek = () => {
+  let first_day = document.querySelector('.day').textContent.split('\n')[1]
+  let to_fill = days_abbr.indexOf(first_day);
+  let parent_element = document.getElementById('days_cont');
+  for(let i = 0; i < to_fill; i++){
+    parent_element.prepend(document.createElement('div'));
+  }
+}
+
+
 // const showEntriesMade = (month, year) => {
 //
 //   //use appropriate array method here
